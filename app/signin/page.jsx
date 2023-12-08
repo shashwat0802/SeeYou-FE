@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import logoPath from '@/public/images/logo.svg';
 import Input from '../components/Input';
@@ -5,21 +6,47 @@ import PasswordInput from '../components/PasswordInput';
 import { FaGoogle } from 'react-icons/fa';
 import { FaApple } from 'react-icons/fa6';
 import { FaFacebookF } from 'react-icons/fa';
-
 import Link from 'next/link';
+import { customFetch } from '@/utils/fetchHelper';
+import { useRouter } from 'next/router';
 
 const SignIn = () => {
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const formJson = Object.fromEntries(formData.entries());
+    console.log(formJson);
+    try {
+      const response = await customFetch('/users/login', {
+        method: 'POST',
+        body: JSON.stringify(formJson),
+      });
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('role', response.role);
+      // call toast
+      router.push('/dashboard');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="container mx-auto">
       <div className="grid place-items-center h-screen">
         <div className="grid place-items-center">
           <Image src={logoPath} height={90} width={90} alt="" />
           <p className="font-black text-2xl my-3">Welcome!</p>
-          <form action="" className="border-b border-b-[#D4D6DD] pb-4">
-            <Input type="email" id="email-id" placeholder="Email Address" />
+          <form
+            action=""
+            className="border-b border-b-[#D4D6DD] pb-4"
+            onSubmit={handleSubmit}
+          >
+            <Input type="email" id="Email" placeholder="Email Address" />
             <PasswordInput
               type="password"
-              id="password"
+              id="Password"
               placeholder="Password"
             />
             <Link

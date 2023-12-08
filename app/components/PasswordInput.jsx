@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { BiSolidHide } from 'react-icons/bi';
 
-const PasswordInput = ({ id, placeholder, label }) => {
+const PasswordInput = ({ id, placeholder, label, required }) => {
   const [password, setPassword] = useState('');
   const [type, setType] = useState('password');
   const handleToggle = (e) => {
@@ -30,6 +30,8 @@ const PasswordInput = ({ id, placeholder, label }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="peer relative h-10 w-full rounded-md bg-transparent border-[#C5C6CC] border pl-4 pr-20 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:drop-shadow-lg placeholder:text-[#8F9098] placeholder:text-white rounded-xl py-6 focus:border-white"
+          required={required}
+          autoComplete="current-password"
         />
         <span
           className={`absolute right-4 rounded-md transition-all duration-200 ease-in-out cursor-pointer ${
