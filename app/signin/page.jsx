@@ -8,7 +8,7 @@ import { FaApple } from 'react-icons/fa6';
 import { FaFacebookF } from 'react-icons/fa';
 import Link from 'next/link';
 import { customFetch } from '@/utils/fetchHelper';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const SignIn = () => {
   const router = useRouter();
