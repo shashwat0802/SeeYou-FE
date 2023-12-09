@@ -48,7 +48,7 @@ const PasswordInput = ({ id, placeholder, label, required, left }) => {
               position: 'absolute',
               left: `${left}px`,
               top: '10px',
-              color: 'red',
+              color: '#FF616D',
             }}
           >
             *
