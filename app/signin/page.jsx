@@ -65,7 +65,7 @@ const SignIn = () => {
             <div className="text-center">
               <span className="text-[#71727A] font-bold text-xs">
                 Not a member?{' '}
-                <Link href={'/forgot-password'} className="text-white text-sm">
+                <Link href={'/signup'} className="text-white text-sm">
                   Register now
                 </Link>
               </span>
