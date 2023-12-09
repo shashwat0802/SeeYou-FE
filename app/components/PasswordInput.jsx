@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { BiSolidHide } from 'react-icons/bi';
 
-const PasswordInput = ({ id, placeholder, label, required }) => {
+const PasswordInput = ({ id, placeholder, label, required, left }) => {
   const [password, setPassword] = useState('');
   const [type, setType] = useState('password');
   const handleToggle = (e) => {
@@ -41,6 +41,19 @@ const PasswordInput = ({ id, placeholder, label, required }) => {
         >
           <BiSolidHide />
         </span>
+        {required && (
+          <span
+            className="asterisk"
+            style={{
+              position: 'absolute',
+              left: `${left}px`,
+              top: '10px',
+              color: 'red',
+            }}
+          >
+            *
+          </span>
+        )}
       </div>
     </div>
   );

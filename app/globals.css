@@ -52,3 +52,25 @@ body {
   height: 40px;
   animation: spin 1s linear infinite;
 }
+
+.react-tel-input {
+  display: block !important;
+  font-family: inherit !important;
+}
+
+
+.flag-dropdown {
+  top: 20px !important
+}
+
+.country-list {
+  background-color: #1F222A !important;
+}
+
+.country-list .country.highlight {
+  background-color: transparent !important;
+}
+
+.dial-code {
+  color: #fff !important;
+}

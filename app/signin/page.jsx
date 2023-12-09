@@ -43,11 +43,19 @@ const SignIn = () => {
             className="border-b border-b-[#D4D6DD] pb-4"
             onSubmit={handleSubmit}
           >
-            <Input type="email" id="Email" placeholder="Email Address" />
+            <Input
+              type="email"
+              id="Email"
+              placeholder="Email Address"
+              required={true}
+              left={120}
+            />
             <PasswordInput
               type="password"
               id="Password"
               placeholder="Password"
+              required={true}
+              left={90}
             />
             <Link
               href={'/forgot-password'}
