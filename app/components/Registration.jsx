@@ -4,15 +4,13 @@ import logoPath from '@/public/images/logo.svg';
 import Input from './Input';
 import PasswordInput from './PasswordInput';
 import PhoneInput from 'react-phone-input-2';
-import { useState } from 'react';
-import { FaApple, FaFacebookF, FaGoogle } from 'react-icons/fa';
 import Link from 'next/link';
+import SocialLogins from './SocialLogins';
 const Registration = ({ type }) => {
-  const [phone, setPhone] = useState();
   return (
-    <div className="container mx-auto text-center grid place-items-center p-4">
+    <div className="container mx-auto text-center grid place-items-center p-6  h-screen">
       <Image src={logoPath} height={90} width={90} alt="" />
-      <p className="break-words font-black text-2xl my-3">Register as {type}</p>
+      <p className="break-words font-black text-2xl mt-3">Register as {type}</p>
       <p className="text-sm text-[#FF616D]">*Marked fields are mandatory</p>
       <form action="" className="border-b border-b-[#D4D6DD] pb-4">
         <Input
@@ -63,35 +61,16 @@ const Registration = ({ type }) => {
         />
         <button
           type="submit"
-          className="py-4 rounded-md block w-full font-bold bg-white text-black text-center text-sm my-3"
+          className="py-4 rounded-md block w-full font-bold bg-white text-black text-center text-sm my-4"
         >
           Sign Up
         </button>
       </form>
-      <p className="text-[#C5C6CC] text-xs text-center my-3">
-        Or continue with
-      </p>
-      <ul className="grid grid-cols-3 gap-4">
-        <li>
-          <button className="rounded-full bg-[#ED3241] text-white w-10 h-10 flex justify-center items-center">
-            <FaGoogle />
-          </button>
-        </li>
-        <li>
-          <button className="rounded-full bg-[#34373F] text-white w-10 h-10 flex justify-center items-center">
-            <FaApple />
-          </button>
-        </li>
-        <li>
-          <button className="rounded-full bg-[#006FFD] text-white w-10 h-10 flex justify-center items-center">
-            <FaFacebookF />
-          </button>
-        </li>
-      </ul>
+      <SocialLogins />
       <div className="text-center mt-4">
         <span className="text-[#71727A] font-bold text-xs">
           Already have an account?{' '}
-          <Link href={'/signup'} className="text-white text-sm">
+          <Link href={'/signin'} className="text-white text-sm">
             Sign In
           </Link>
         </span>

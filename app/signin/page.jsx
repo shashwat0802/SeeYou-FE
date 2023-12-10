@@ -9,6 +9,7 @@ import { FaFacebookF } from 'react-icons/fa';
 import Link from 'next/link';
 import { customFetch } from '@/utils/fetchHelper';
 import { useRouter } from 'next/navigation';
+import SocialLogins from '../components/SocialLogins';
 
 const SignIn = () => {
   const router = useRouter();
@@ -79,26 +80,7 @@ const SignIn = () => {
               </span>
             </div>
           </form>
-          <p className="text-[#C5C6CC] text-xs text-center my-3">
-            Or continue with
-          </p>
-          <ul className="grid grid-cols-3 gap-4">
-            <li>
-              <button className="rounded-full bg-[#ED3241] text-white w-10 h-10 flex justify-center items-center">
-                <FaGoogle />
-              </button>
-            </li>
-            <li>
-              <button className="rounded-full bg-[#34373F] text-white w-10 h-10 flex justify-center items-center">
-                <FaApple />
-              </button>
-            </li>
-            <li>
-              <button className="rounded-full bg-[#006FFD] text-white w-10 h-10 flex justify-center items-center">
-                <FaFacebookF />
-              </button>
-            </li>
-          </ul>
+          <SocialLogins />
         </div>
       </div>
     </div>
