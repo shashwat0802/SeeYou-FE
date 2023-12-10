@@ -25,15 +25,16 @@ const Registration = ({ type }) => {
     setEmail(emailValue);
     console.log(formJson);
     try {
-      await customFetch('/users/register', {
+      const response = await customFetch('/users/register', {
         method: 'POST',
         body: JSON.stringify(formJson),
       });
+      console.log(response);
       toast.success('Success !, Please Verify OTP');
       setIsOTP(true);
     } catch (error) {
       console.log(error);
-      toast.error(error);
+      toast.error(error.message);
     }
   };
 
@@ -134,7 +135,11 @@ const Registration = ({ type }) => {
         </div>
       )}
       {isOTP && (
-        <form action="" onSubmit={handleVerify}>
+        <form
+          action=""
+          onSubmit={handleVerify}
+          className="grid place-items-start"
+        >
           <p className="text-lg">
             <button
               className="mr-3 cursor-pointer place-self-start"
