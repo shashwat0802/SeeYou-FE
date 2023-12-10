@@ -11,10 +11,13 @@ import { customFetch } from '@/utils/fetchHelper';
 import { useState } from 'react';
 import OTPInput from 'react-otp-input';
 import { FaChevronLeft } from 'react-icons/fa';
+import starPath from '@/public/images/star.svg';
+
 const Registration = ({ type }) => {
-  const [isOTP, setIsOTP] = useState(false);
+  const [isOTP, setIsOTP] = useState(true);
   const [otp, setOtp] = useState('');
   const [email, setEmail] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleRegistration = async (e) => {
     e.preventDefault();
@@ -49,7 +52,7 @@ const Registration = ({ type }) => {
         }),
       });
       console.log(response);
-      setIsTab('password');
+      setIsSuccess(true);
     } catch (error) {
       console.log(error);
       toast.error(error);
@@ -58,7 +61,7 @@ const Registration = ({ type }) => {
 
   return (
     <div className="container mx-auto text-center grid place-items-center p-6  h-screen">
-      {!isOTP && (
+      {!isOTP && !isSuccess && (
         <div className="h-full grid place-items-center">
           <Image src={logoPath} height={90} width={90} alt="" />
           <p className="break-words font-black text-2xl mt-3">
@@ -134,7 +137,7 @@ const Registration = ({ type }) => {
           </div>
         </div>
       )}
-      {isOTP && (
+      {isOTP && !isSuccess && (
         <form
           action=""
           onSubmit={handleVerify}
@@ -173,6 +176,33 @@ const Registration = ({ type }) => {
             Verify
           </button>
         </form>
+      )}
+      {isSuccess && (
+        <div className="grid h-screen place-items-center text-center">
+          <div className="flex flex-col items-center">
+            <Image src={starPath} height={90} width={90} alt="" />
+            <p className="text-2xl font-black mt-6">Password Changed!</p>
+            <p className="text-base my-3">
+              Your password has been changed succesfully
+            </p>
+            <button
+              onClick={() => {
+                router.push(`/complete-profile/${type}`);
+              }}
+              className="py-4 rounded-md block w-full font-bold bg-white text-black text-center text-sm my-4"
+            >
+              Continue
+            </button>
+            <button
+              onClick={() => {
+                router.push(`/dashboard/${type}`);
+              }}
+              className="py-4 rounded-md block w-full font-bold bg-transparent text-white text-center text-sm my-4 border-white border"
+            >
+              Go to Dashboard
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );

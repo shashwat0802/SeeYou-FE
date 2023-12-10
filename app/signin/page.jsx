@@ -27,7 +27,7 @@ const SignIn = () => {
       localStorage.setItem('token', response.token);
       localStorage.setItem('role', response.role);
       // call toast
-      router.push('/dashboard');
+      router.push(`/dashboard/${response.role}`);
     } catch (error) {
       console.log(error);
     }
