@@ -1,17 +1,12 @@
 'use client';
+import Registration from '@/app/components/Registration';
 import { toast } from 'react-toastify';
 const CandidatePage = () => {
-  const notify = () => toast('Wow so easy!');
   return (
     <div>
-      candidate
-      <button
-        onClick={() => {
-          notify();
-        }}
-      >
-        click
-      </button>
+      <div>
+        <Registration type="candidate" />
+      </div>
     </div>
   );
 };

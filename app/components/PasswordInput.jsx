@@ -5,6 +5,10 @@ import { BiSolidHide } from 'react-icons/bi';
 const PasswordInput = ({ id, placeholder, label, required, left }) => {
   const [password, setPassword] = useState('');
   const [type, setType] = useState('password');
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = () => setIsFocused(true);
+  const handleBlur = () => setIsFocused(false);
   const handleToggle = (e) => {
     if (type === 'password') {
       setType('text');
@@ -21,7 +25,7 @@ const PasswordInput = ({ id, placeholder, label, required, left }) => {
       >
         {label}
       </label>
-      <div className="relative flex items-center">
+      <div className="relative flex items-center custom-pass-input">
         <input
           id={id}
           type={type}
@@ -32,6 +36,8 @@ const PasswordInput = ({ id, placeholder, label, required, left }) => {
           className="peer relative h-10 w-full rounded-md bg-transparent border-[#C5C6CC] border pl-4 pr-20 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:drop-shadow-lg placeholder:text-[#8F9098] placeholder:text-white rounded-xl py-6 focus:border-white"
           required={required}
           autoComplete="current-password"
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
         <span
           className={`absolute right-4 rounded-md transition-all duration-200 ease-in-out cursor-pointer ${
@@ -41,7 +47,7 @@ const PasswordInput = ({ id, placeholder, label, required, left }) => {
         >
           <BiSolidHide />
         </span>
-        {required && (
+        {required && !isFocused && password === '' && (
           <span
             className="asterisk"
             style={{

@@ -14,5 +14,9 @@ export async function customFetch(endpoint, options = {}) {
 
   // Perform the fetch request
   const response = await fetch(url, options);
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Error ${response.status}: ${errorText}`);
+  }
   return response.json();
 }

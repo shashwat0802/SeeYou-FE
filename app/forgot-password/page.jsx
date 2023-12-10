@@ -40,8 +40,8 @@ const ForgotPassword = () => {
       const response = await customFetch('/users/verifyotp', {
         method: 'POST',
         body: JSON.stringify({
-          email,
-          otp,
+          Email: email,
+          OTP: otp,
         }),
       });
       console.log(response);

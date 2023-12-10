@@ -7,7 +7,7 @@ const Input = ({ id, type, placeholder, label, required, left }) => {
       >
         {label}
       </label>
-      <div className="relative flex items-center">
+      <div className="relative flex items-center custom-input">
         <input
           id={id}
           type={type}

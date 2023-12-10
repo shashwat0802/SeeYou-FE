@@ -74,3 +74,16 @@ body {
 .dial-code {
   color: #fff !important;
 }
+
+/* Hide the asterisk when the input is focused */
+.custom-input input:focus+.asterisk,
+/* Hide the asterisk when the input has a value */
+.custom-input input:valid+.asterisk {
+  display: none !important;
+}
+
+/* Default state of the asterisk */
+.custom-input .asterisk {
+  display: block !important;
+  /* or 'inline', depending on your layout needs */
+}
