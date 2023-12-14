@@ -12,19 +12,21 @@ import { useState } from 'react';
 import OTPInput from 'react-otp-input';
 import { FaChevronLeft } from 'react-icons/fa';
 import starPath from '@/public/images/star.svg';
+import { useRouter } from 'next/navigation';
 
 const Registration = ({ type }) => {
-  const [isOTP, setIsOTP] = useState(true);
+  const [isOTP, setIsOTP] = useState(false);
   const [otp, setOtp] = useState('');
   const [email, setEmail] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
+  const router = useRouter();
 
   const handleRegistration = async (e) => {
     e.preventDefault();
     const emailValue = e.currentTarget.Email.value;
     const formData = new FormData(e.target);
     const formJson = Object.fromEntries(formData.entries());
-    formJson.Role = type === 'recruiter' ? 'Recruiter' : 'Candidate';
+    formJson.Role = type;
     setEmail(emailValue);
     console.log(formJson);
     try {
@@ -181,9 +183,9 @@ const Registration = ({ type }) => {
         <div className="grid h-screen place-items-center text-center">
           <div className="flex flex-col items-center">
             <Image src={starPath} height={90} width={90} alt="" />
-            <p className="text-2xl font-black mt-6">Password Changed!</p>
+            <p className="text-2xl font-black mt-6">Registration Completed!</p>
             <p className="text-base my-3">
-              Your password has been changed succesfully
+              You are registered now. Take your time to complete your profile
             </p>
             <button
               onClick={() => {

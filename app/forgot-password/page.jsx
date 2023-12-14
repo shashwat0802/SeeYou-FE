@@ -12,7 +12,7 @@ import starPath from '@/public/images/star.svg';
 
 const ForgotPassword = () => {
   const router = useRouter();
-  const [isTab, setIsTab] = useState('success');
+  const [isTab, setIsTab] = useState('email');
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
 
@@ -24,7 +24,7 @@ const ForgotPassword = () => {
       const response = await customFetch('/users/forgotpassword', {
         method: 'POST',
         body: JSON.stringify({
-          email: emailValue,
+          Email: emailValue,
         }),
       });
       console.log(response);
@@ -37,7 +37,7 @@ const ForgotPassword = () => {
   const handleVerify = async (e) => {
     e.preventDefault();
     try {
-      const response = await customFetch('/users/verifyotp', {
+      const response = await customFetch('/users/verifyresetotp', {
         method: 'POST',
         body: JSON.stringify({
           Email: email,
@@ -97,7 +97,7 @@ const ForgotPassword = () => {
           </form>
         )}
         {isTab === 'otp' && (
-          <form action="" onSubmit={handleVerify}>
+          <form action="" onSubmit={handleVerify} className="mt-6">
             <p className="text-lg">
               <button
                 className="mr-3 cursor-pointer"
@@ -131,7 +131,7 @@ const ForgotPassword = () => {
           </form>
         )}
         {isTab === 'password' && (
-          <form action="" onSubmit={handlePassword}>
+          <form action="" onSubmit={handlePassword} className="mt-6">
             <p className="text-lg">
               <button
                 className="mr-3 cursor-pointer"
