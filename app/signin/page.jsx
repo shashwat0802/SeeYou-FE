@@ -3,13 +3,12 @@ import Image from 'next/image';
 import logoPath from '@/public/images/logo.svg';
 import Input from '../components/Input';
 import PasswordInput from '../components/PasswordInput';
-import { FaGoogle } from 'react-icons/fa';
-import { FaApple } from 'react-icons/fa6';
-import { FaFacebookF } from 'react-icons/fa';
 import Link from 'next/link';
 import { customFetch } from '@/utils/fetchHelper';
 import { useRouter } from 'next/navigation';
 import SocialLogins from '../components/SocialLogins';
+import Cookies from 'js-cookie';
+import { toast } from 'react-toastify';
 
 const SignIn = () => {
   const router = useRouter();
@@ -24,13 +23,23 @@ const SignIn = () => {
         method: 'POST',
         body: JSON.stringify(formJson),
       });
-      localStorage.setItem('token', response.token);
-      localStorage.setItem('role', response.role);
-      // call toast
+      if (response) {
+        const { token } = response;
+        setCookie('jwt', token);
+      } else {
+        throw new Error('failed to login');
+      }
+      toast.success('Sucess');
       router.push(`/dashboard/${response.role}`);
     } catch (error) {
       console.log(error);
+      toast.error(error.message);
     }
+  };
+
+  const setCookie = (name, data) => {
+    // Set the cookie with a 1-day expiry
+    Cookies.set(name, JSON.stringify(data), { expires: 1 });
   };
 
   return (
