@@ -13,8 +13,9 @@ import OTPInput from 'react-otp-input';
 import { FaChevronLeft } from 'react-icons/fa';
 import starPath from '@/public/images/star.svg';
 import { useRouter } from 'next/navigation';
+import goldUser from '@/public/images/gold-user.svg';
 
-const Registration = ({ type }) => {
+const Registration = ({ type, role }) => {
   const [isOTP, setIsOTP] = useState(false);
   const [otp, setOtp] = useState('');
   const [email, setEmail] = useState('');
@@ -179,7 +180,7 @@ const Registration = ({ type }) => {
           </button>
         </form>
       )}
-      {isSuccess && (
+      {isSuccess && type === 'candidate' && (
         <div className="grid h-screen place-items-center text-center">
           <div className="flex flex-col items-center">
             <Image src={starPath} height={90} width={90} alt="" />
@@ -205,6 +206,31 @@ const Registration = ({ type }) => {
             </button>
           </div>
         </div>
+      )}
+      {isSuccess && type === 'recruiter' && (
+        <>
+          <div className="grid h-screen place-items-center text-center">
+            <div className="flex flex-col items-center">
+              <Image src={goldUser} height={450} width={350} alt="" />
+              <button
+                onClick={() => {
+                  router.push(`/complete-profile/${type}`);
+                }}
+                className="py-4 rounded-md block w-full font-bold text-white text-center text-sm my-4 border border-white bg-[#816F51]"
+              >
+                Start Posting a Job for No Charge
+              </button>
+              <button
+                onClick={() => {
+                  router.push(`/dashboard/${type}`);
+                }}
+                className="py-4 rounded-md block w-full font-bold bg-transparent text-white text-center text-sm my-4 border-white border"
+              >
+                Go to Dashboard
+              </button>
+            </div>
+          </div>
+        </>
       )}
     </div>
   );

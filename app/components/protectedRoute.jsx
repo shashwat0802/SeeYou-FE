@@ -33,7 +33,6 @@ const ProtectedRoute = (WrappedComponent, role) => {
       verifyAccess();
     }, []);
 
-    console.log(props);
     return <WrappedComponent {...props} />;
   };
 };

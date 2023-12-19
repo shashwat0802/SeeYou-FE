@@ -128,3 +128,13 @@ body {
     --tw-translate-x: 0;
   }
 }
+
+.gold {
+  background-image: linear-gradient(rgba(255, 223, 118, 1),
+      /* Start color */
+      rgba(254, 233, 176, 1),
+      /* Middle color */
+      rgba(255, 220, 122, 1)
+      /* End color */
+    );
+}
