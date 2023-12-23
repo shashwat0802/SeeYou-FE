@@ -1,7 +1,9 @@
 'use client';
 import { FaChevronLeft } from 'react-icons/fa';
 
-const ProgressBar = ({ step, setStep, totalStep, type }) => {
+const ProgressBar = ({ step, setStep, totalSteps, type }) => {
+  const progressBarWidth = `${(step / totalSteps) * 100}%`;
+
   return (
     <div>
       <p className="text-lg">
@@ -9,18 +11,18 @@ const ProgressBar = ({ step, setStep, totalStep, type }) => {
           className="mr-3 cursor-pointer place-self-start"
           onClick={(e) => {
             e.preventDefault();
-            setStep(step - 1);
+            if (step > 1) setStep(step - 1);
           }}
         >
           <FaChevronLeft />
-        </button>{' '}
+        </button>
         {type === 'candidate' ? 'Fill the Form' : 'Complete Details'}
       </p>
 
-      <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+      <div className="w-full bg-[#34373F] rounded-full h-2.5 bg-[#34373F]">
         <div
-          class="bg-blue-600 h-2.5 rounded-full"
-          style={`width: ${100 / totalStep}%`}
+          className="bg-white h-2.5 rounded-full my-2"
+          style={{ width: progressBarWidth }}
         ></div>
       </div>
     </div>

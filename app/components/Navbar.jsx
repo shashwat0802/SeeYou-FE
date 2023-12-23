@@ -113,7 +113,7 @@ const Navbar = () => {
               </Link>
               <Link
                 href="#"
-                className="flex items-center space-x-4  py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
+                className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
               >
                 <span className="text-xl">
                   <IoBriefcaseOutline />
@@ -123,7 +123,7 @@ const Navbar = () => {
               </Link>
               <Link
                 href="#"
-                className="flex items-center space-x-4  py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
+                className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
               >
                 <span className="text-xl font-bold">
                   <CiBookmarkMinus />
@@ -133,7 +133,7 @@ const Navbar = () => {
               </Link>
               <Link
                 href="#"
-                className="flex items-center space-x-4  py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
+                className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
               >
                 <span className="text-xl">
                   <FaRegUser />
@@ -143,7 +143,7 @@ const Navbar = () => {
               </Link>
               <Link
                 href="#"
-                className="flex items-center space-x-4  py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
+                className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
               >
                 <span className="text-xl">
                   <IoMdNotificationsOutline />
@@ -153,7 +153,7 @@ const Navbar = () => {
               </Link>
               <Link
                 href="#"
-                className="flex items-center space-x-4  py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
+                className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
               >
                 <span className="text-xl font-black">
                   <IoSettingsOutline />
@@ -163,7 +163,7 @@ const Navbar = () => {
               </Link>
               <Link
                 href="#"
-                className="flex items-center space-x-4  py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-[#FF616D] text-[#FF616D] text-base"
+                className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-[#FF616D] text-[#FF616D] text-base"
               >
                 <span className="text-xl">
                   <IoIosLogOut />

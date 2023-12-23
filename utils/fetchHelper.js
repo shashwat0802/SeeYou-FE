@@ -6,13 +6,11 @@ export async function customFetch(endpoint, options = {}) {
   const url = `${baseUrl}${endpoint}`;
 
   // Retrieve the token from the 'jwt' cookie
-  const token = Cookies.get('jwt');
-  const tokenWithoutQuotes = token.replace(/"/g, '');
-  console.log(tokenWithoutQuotes);
-
+  let token = Cookies.get('jwt');
+  token = token ? token.replace(/"/g, '') : null;
   const defaultHeaders = {
     'Content-Type': 'application/json',
-    ...(token && { Authorization: `Bearer ${tokenWithoutQuotes}` }),
+    ...(token && { Authorization: `Bearer ${token}` }),
   };
 
   options.headers = {
