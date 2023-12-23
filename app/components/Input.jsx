@@ -3,7 +3,7 @@ const Input = ({ id, type, placeholder, label, required, left }) => {
     <div className="group w-full md:w-80 lg:w-96">
       <label
         htmlFor={id}
-        className="inline-block w-full text-sm font-medium text-gray-500 transition-all duration-200 ease-in-out text-white"
+        className="inline-block w-full text-sm font-medium text-gray-500 transition-all duration-200 ease-in-out text-white my-2"
       >
         {label}
         {required && label && <span className="text-[#FF616D]">*</span>}

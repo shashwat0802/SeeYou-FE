@@ -1,0 +1,9 @@
+.ant-select-selection-placeholder {
+    color: #8F9098 !important
+}
+
+.ant-select-selector {
+    border-color: white !important;
+    background-color: transparent !important;
+    padding: 0.35rem !important;
+}
