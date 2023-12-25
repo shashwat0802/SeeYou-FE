@@ -2,40 +2,69 @@
 
 import Input from '@/app/components/Input';
 import ProgressBar from '@/app/components/ProgressBar';
-import { Select, Space } from 'antd';
+import { Modal, Select, Space } from 'antd';
 import { useState } from 'react';
 import { message, Upload } from 'antd';
 import { MdOutlineDriveFolderUpload } from 'react-icons/md';
+import { AiOutlineLoading } from 'react-icons/ai';
+import { FaPlus } from 'react-icons/fa';
+import { BiLoaderCircle } from 'react-icons/bi';
+import Webcam from 'react-webcam';
+
 const { Dragger } = Upload;
+
+const getBase64 = (img, callback) => {
+  const reader = new FileReader();
+  reader.addEventListener('load', () => callback(reader.result));
+  reader.readAsDataURL(img);
+};
+const beforeUpload = (file) => {
+  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+  if (!isJpgOrPng) {
+    message.error('You can only upload JPG/PNG file!');
+  }
+  const isLt2M = file.size / 1024 / 1024 < 10;
+  if (!isLt2M) {
+    message.error('Image must smaller than 10MB!');
+  }
+  return isJpgOrPng && isLt2M;
+};
 
 const CompleteProfileCandidate = () => {
   const [step, setStep] = useState(1);
-  const options = [
-    {
-      label: 'China',
-      value: 'china',
-      emoji: '🇨🇳',
-      desc: 'China (中国)',
-    },
-    {
-      label: 'USA',
-      value: 'usa',
-      emoji: '🇺🇸',
-      desc: 'USA (美国)',
-    },
-    {
-      label: 'Japan',
-      value: 'japan',
-      emoji: '🇯🇵',
-      desc: 'Japan (日本)',
-    },
-    {
-      label: 'Korea',
-      value: 'korea',
-      emoji: '🇰🇷',
-      desc: 'Korea (韩国)',
-    },
-  ];
+  const [options, setOptions] = useState();
+  const [loading, setLoading] = useState(false);
+  const [imageUrl, setImageUrl] = useState();
+  const [isWebCamActive, setWebCamActive] = useState(false);
+
+  const handleChange = (info) => {
+    setLoading(true);
+
+    getBase64(info.file.originFileObj, (url) => {
+      setLoading(false);
+      setImageUrl(url);
+    });
+  };
+
+  const uploadButton = (
+    <div>
+      {loading ? (
+        <BiLoaderCircle />
+      ) : (
+        <button className="text-white flex flex-col justify-center items-center w-full py-4 h-full bg-[#1F222A]">
+          <div className="text-3xl my-4">
+            <FaPlus />
+          </div>
+          <p>
+            Upload your photo from device
+            <span className="text-[#FF616D]"> *</span>
+            <br />
+            (Max 10 MB)
+          </p>
+        </button>
+      )}
+    </div>
+  );
 
   const props = {
     name: 'file',
@@ -57,9 +86,6 @@ const CompleteProfileCandidate = () => {
     },
   };
 
-  const handleChange = (value) => {
-    console.log(`selected ${value}`);
-  };
   return (
     <div>
       <ProgressBar
@@ -112,7 +138,7 @@ const CompleteProfileCandidate = () => {
               width: '100%',
             }}
             placeholder="Search and add “skills”"
-            onChange={handleChange}
+            onChange={() => {}}
             optionLabelProp="label"
             options={options}
             optionRender={(option) => (
@@ -153,7 +179,59 @@ const CompleteProfileCandidate = () => {
           />
         </div>
         {/* step 2 */}
-        <div className={step == 2 ? 'block' : 'hidden'}></div>
+        <div className={step == 2 ? 'block' : 'hidden'}>
+          <p className="break-words font-black text-2xl mt-6">
+            Complete your Profile
+          </p>
+          <p className="text-sm text-[#FF616D] my-2">
+            *Marked fields are mandatory
+          </p>
+          <Upload.Dragger
+            name="avatar"
+            listType="picture-card"
+            maxCount={1}
+            multiple={false}
+            showUploadList={false}
+            action=""
+            beforeUpload={beforeUpload}
+            onChange={handleChange}
+          >
+            {imageUrl ? (
+              <img
+                src={imageUrl}
+                alt="avatar"
+                style={{
+                  width: '100%',
+                }}
+              />
+            ) : (
+              uploadButton
+            )}
+          </Upload.Dragger>
+          <p>OR</p>
+          <button
+            className=""
+            onClick={() => {
+              setWebCamActive(!isWebCamActive);
+            }}
+          >
+            {isWebCamActive ? 'close' : 'activate'}
+          </button>
+          {isWebCamActive && (
+            <Webcam screenshotFormat="image/jpeg">
+              {({ getScreenshot }) => (
+                <button
+                  onClick={() => {
+                    const imageSrc = getScreenshot();
+                    setImageUrl(imageSrc);
+                  }}
+                >
+                  Capture photo
+                </button>
+              )}
+            </Webcam>
+          )}
+        </div>
       </form>
       <button
         onClick={() => {

@@ -7,3 +7,15 @@
     background-color: transparent !important;
     padding: 0.35rem !important;
 }
+
+.ant-select-selection-overflow-item {
+    color: white !important;
+}
+
+.ant-select-selection-item {
+    background-color: #8F9098 !important;
+}
+
+.ant-select-selection-item-remove {
+    color: white !important;
+}
