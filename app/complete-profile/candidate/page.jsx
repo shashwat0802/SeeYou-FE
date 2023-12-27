@@ -7,8 +7,9 @@ import { useState } from 'react';
 import { message, Upload } from 'antd';
 import { MdOutlineDriveFolderUpload } from 'react-icons/md';
 import { AiOutlineLoading } from 'react-icons/ai';
-import { FaPlus } from 'react-icons/fa';
+import { FaCamera, FaPlus } from 'react-icons/fa';
 import { BiLoaderCircle } from 'react-icons/bi';
+import { TbCapture } from 'react-icons/tb';
 import Webcam from 'react-webcam';
 
 const { Dragger } = Upload;
@@ -208,26 +209,42 @@ const CompleteProfileCandidate = () => {
               uploadButton
             )}
           </Upload.Dragger>
-          <p>OR</p>
+          <p className="text-center text-[#C5C6CC] my-4">OR</p>
           <button
-            className=""
+            className="flex items-center justify-between p-4 bg-[#1F222A] w-full rounded-lg border border-[#35383F] my-4"
             onClick={() => {
               setWebCamActive(!isWebCamActive);
             }}
           >
-            {isWebCamActive ? 'close' : 'activate'}
+            {/* {isWebCamActive ? 'close' : 'activate'} */}
+            <div className="text-left">
+              <p className="text-white text-lg">
+                {isWebCamActive ? 'Close Camera' : 'Use your Camera'}
+              </p>
+              <p className=" text-[#C5C6CC]">
+                Capture realtime photo of yourself
+              </p>
+            </div>
+            <div>
+              <FaCamera />
+            </div>
           </button>
           {isWebCamActive && (
             <Webcam screenshotFormat="image/jpeg">
               {({ getScreenshot }) => (
-                <button
-                  onClick={() => {
-                    const imageSrc = getScreenshot();
-                    setImageUrl(imageSrc);
-                  }}
-                >
-                  Capture photo
-                </button>
+                <div className="flex justify-center my-4">
+                  <div className="border border-white flex items-center justify-center rounded-full p-4 border-dashed">
+                    <button
+                      className="text-4xl text-red-400"
+                      onClick={() => {
+                        const imageSrc = getScreenshot();
+                        setImageUrl(imageSrc);
+                      }}
+                    >
+                      <TbCapture />
+                    </button>
+                  </div>
+                </div>
               )}
             </Webcam>
           )}
