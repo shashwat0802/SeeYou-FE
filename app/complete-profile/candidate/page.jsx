@@ -11,6 +11,8 @@ import { FaCamera, FaPlus } from 'react-icons/fa';
 import { BiLoaderCircle } from 'react-icons/bi';
 import { TbCapture } from 'react-icons/tb';
 import Webcam from 'react-webcam';
+import Link from 'next/link';
+import UploadVideo from '@/app/components/UploadVideo';
 
 const { Dragger } = Upload;
 
@@ -250,6 +252,10 @@ const CompleteProfileCandidate = () => {
           )}
         </div>
       </form>
+      {/* step 3 */}
+      <div className={step === 3 ? 'block' : 'hidden'}>
+        <UploadVideo />
+      </div>
       <button
         onClick={() => {
           setStep(step + 1);
