@@ -15,14 +15,11 @@ import { FaChevronDown } from 'react-icons/fa';
 const Navbar = () => {
   return (
     <>
-      <div
-        className="relative min-h-screen md:hidden"
-        data-dev-hint="container"
-      >
+      <div>
         <input type="checkbox" id="menu-open" className="hidden" />
 
         {/* <label
-        for="menu-open"
+        htmlFor="menu-open"
         className="absolute right-2 bottom-2 shadow-lg rounded-full p-2 bg-gray-100 text-gray-600 md:hidden"
         data-dev-hint="floating action button"
       >
@@ -34,8 +31,8 @@ const Navbar = () => {
           stroke="currentColor"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             stroke-width="2"
             d="M4 6h16M4 12h16M4 18h16"
           />
@@ -54,7 +51,7 @@ const Navbar = () => {
           </Link>
 
           <label
-            for="menu-open"
+            htmlFor="menu-open"
             id="mobile-menu-button"
             className="m-2 p-2 focus:outline-none hover:text-white hover:bg-gray-700 rounded-md"
           >
@@ -67,8 +64,8 @@ const Navbar = () => {
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 stroke-width="2"
                 d="M4 6h16M4 12h16M4 18h16"
               />
@@ -82,8 +79,8 @@ const Navbar = () => {
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 stroke-width="2"
                 d="M6 18L18 6M6 6l12 12"
               />
