@@ -24,8 +24,9 @@ const SignIn = () => {
         body: JSON.stringify(formJson),
       });
       if (response) {
-        const { token } = response;
+        const { token, role } = response;
         setCookie('jwt', token);
+        setCookie('role', role);
       } else {
         throw new Error('failed to login');
       }
@@ -38,8 +39,9 @@ const SignIn = () => {
   };
 
   const setCookie = (name, data) => {
-    // Set the cookie with a 1-day expiry
-    Cookies.set(name, JSON.stringify(data), { expires: 1 });
+    // If data is a string, don't stringify it
+    const value = typeof data === 'string' ? data : JSON.stringify(data);
+    Cookies.set(name, value, { expires: 1 });
   };
 
   return (
