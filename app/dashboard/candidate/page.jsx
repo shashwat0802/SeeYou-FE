@@ -11,6 +11,7 @@ import { GoHome } from 'react-icons/go';
 import { IoBriefcaseOutline, IoLocationOutline } from 'react-icons/io5';
 import { LuArrowUpDown } from 'react-icons/lu';
 import { GoClock } from 'react-icons/go';
+import Input from '@/app/components/Input';
 
 const CandidateDashboard = () => {
   return (
@@ -111,6 +112,35 @@ const CandidateDashboard = () => {
           <button>See All</button>
         </li>
       </ul>
+
+      {/* email me once section */}
+      <form className="rounded-lg p-3 bg-[#1F222A]">
+        <p className="text-lg text-white">
+          Email me once per day for new jobs with these keywords:
+        </p>
+        <label htmlFor="keywords" className="text-[#E8E9F1] text-xs mt-4 mb-2">
+          Maximum 3000 characters
+        </label>
+        <textarea
+          name=""
+          id="AboutExperience"
+          cols="30"
+          rows="3"
+          placeholder="Enter here"
+          className="peer relative w-full rounded-md bg-transparent border-[#C5C6CC] border pl-4 pr-20 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:drop-shadow-lg placeholder:text-[#8F9098] placeholder:text-white rounded-xl py-6 focus:border-white font-bold placeholder:text-sm"
+        ></textarea>
+        <div className="flex items-center justify-between">
+          <input
+            type="email"
+            className="bg-transparent border border-[#35383F] rounded-md text-white placeholder:text-white p-2 focus:outline-none"
+            id="subscribe-email"
+            placeholder="email"
+          />
+          <button type="submit" className="bg-[#35383F] p-2 rounded-md">
+            Subscribe
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
