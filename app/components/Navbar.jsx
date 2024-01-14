@@ -80,6 +80,7 @@ const Navbar = () => {
             <aside
               id="sidebar"
               className="bg-[#22242D] text-gray-100 md:w-64 w-3/4 space-y-6 pt-6 px-0 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out  md:flex md:flex-col md:justify-between overflow-y-auto mt-12"
+              style={{ zIndex: '999' }}
               data-dev-hint="sidebar; px-0 for frameless; px-2 for visually inset the navigation"
             >
               <div
@@ -108,7 +109,7 @@ const Navbar = () => {
                     <span>My Applications</span>
                   </Link>
                   <Link
-                    href="#"
+                    href="/candidate/saved-jobs"
                     className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                   >
                     <span className="text-xl font-bold">
@@ -178,7 +179,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/candidate/saved-jobs"
                     className="flex items-center space-x-4  py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                   >
                     <span>My Applications</span>
@@ -289,6 +290,7 @@ const Navbar = () => {
             <aside
               id="sidebar"
               className="bg-[#22242D] text-gray-100 md:w-64 w-3/4 space-y-6 pt-6 px-0 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out  md:flex md:flex-col md:justify-between overflow-y-auto mt-12"
+              style={{ zIndex: '999' }}
               data-dev-hint="sidebar; px-0 for frameless; px-2 for visually inset the navigation"
             >
               <div

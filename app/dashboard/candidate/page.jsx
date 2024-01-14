@@ -28,6 +28,7 @@ const CandidateDashboard = () => {
           <LuFilter />
         </button>
       </div>
+      {/* ads */}
       <div className="flex">
         <div className="w-1/2 bg-[#E5E6EA] p-4  rounded-l-lg">
           <h1 className="text-xl font-black text-black">
