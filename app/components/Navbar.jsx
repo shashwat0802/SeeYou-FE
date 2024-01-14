@@ -28,28 +28,6 @@ const Navbar = () => {
         <>
           <div>
             <input type="checkbox" id="menu-open" className="hidden" />
-
-            {/* <label
-        htmlFor="menu-open"
-        className="absolute right-2 bottom-2 shadow-lg rounded-full p-2 bg-gray-100 text-gray-600 md:hidden"
-        data-dev-hint="floating action button"
-      >
-        <svg
-          className="h-6 w-6"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-      </label> */}
-
             <header
               className="bg-[#22242D] text-gray-100 flex justify-between md:hidden"
               data-dev-hint="mobile menu bar"
@@ -110,7 +88,7 @@ const Navbar = () => {
               >
                 <nav data-dev-hint="main navigation">
                   <Link
-                    href="#"
+                    href="/dashboard/candidate"
                     className="flex items-center space-x-4 mb-6 py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                   >
                     <span className="text-xl">

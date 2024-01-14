@@ -11,7 +11,6 @@ import { GoHome } from 'react-icons/go';
 import { IoBriefcaseOutline, IoLocationOutline } from 'react-icons/io5';
 import { LuArrowUpDown } from 'react-icons/lu';
 import { GoClock } from 'react-icons/go';
-import Input from '@/app/components/Input';
 
 const CandidateDashboard = () => {
   return (

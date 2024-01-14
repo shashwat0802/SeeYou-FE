@@ -144,3 +144,24 @@ body {
       /* End color */
     );
 }
+
+.blue-bg {
+  background-color: rgba(125, 90, 226, 0.1);
+}
+
+.ant-tabs-tab.ant-tabs-tab-active>div {
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: 18px !important;
+}
+
+.ant-tabs-tab {
+  color: #616161 !important;
+  font-weight: 600 !important;
+  font-size: 18px !important;
+}
+
+.ant-tabs-ink-bar {
+  background-color: #fff !important;
+  height: 4px !important;
+}
