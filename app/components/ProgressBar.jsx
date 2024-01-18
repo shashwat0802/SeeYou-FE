@@ -16,10 +16,10 @@ const ProgressBar = ({ step, setStep, totalSteps, type }) => {
         >
           <FaChevronLeft />
         </button>
-        {type === 'candidate' ? 'Fill the Form' : 'Complete Details'}
+        {type}
       </p>
 
-      <div className="w-full bg-[#34373F] rounded-full h-2.5 bg-[#34373F]">
+      <div className="w-full bg-[#34373F] rounded-full h-2.5">
         <div
           className="bg-white h-2.5 rounded-full my-2"
           style={{ width: progressBarWidth }}
