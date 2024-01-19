@@ -5,7 +5,9 @@ const ProgressBar = ({ step, setStep, totalSteps, type }) => {
   const progressBarWidth = `${(step / totalSteps) * 100}%`;
 
   return (
-    <div>
+    // Make the progress bar sticky so that when content overflows, it is still visible
+    // Need to add pt-4 and remove pt-4 so that progress bar does not shift up
+    <div className="sticky top-0 bg-primary z-10">
       <p className="text-lg">
         <button
           className="mr-3 cursor-pointer place-self-start"
