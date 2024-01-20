@@ -3,7 +3,6 @@ import React, { useRef, useState } from 'react'
 const PreferredCandidatesForm = () => {
     const inputRef = useRef();
     const [preferredLocations,setPreferredLocations] = useState([]);
-    console.log(preferredLocations);
 
     const clickHandler = (event) =>
     {
