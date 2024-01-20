@@ -5,6 +5,8 @@ import ProgressBar from "../components/ProgressBar";
 import Input from '../components/Input';
 import SelectJobType from "../components/postjob/SelectJobType"
 import SelectJobLocation from "../components/postjob/SelectJobLocation";
+import JobLocationDetails from "../components/postjob/JobLocationDetails";
+import PreferredCandidatesForm from "../components/postjob/PreferredCandidatesForm";
 
 const page = () => {
     const [step, setStep] = useState(1);
@@ -25,6 +27,8 @@ const page = () => {
 
         <SelectJobType />
         <SelectJobLocation />
+        <JobLocationDetails />
+        <PreferredCandidatesForm />
 
         <button className="px-4 py-3 bg-white-light rounded-xl text-sm font-bold w-full text-primary disabled:brightness-50">Continue</button>
       </main>

@@ -18,13 +18,14 @@ const Input = ({ id, type, placeholder, label, required, left }) => {
           required={required}
           autoComplete=""
         />
+        {/* Fixed the alignment of asterik to come on level with placeholder */}
         {required && !label && (
           <span
             className="asterisk"
             style={{
               position: 'absolute',
               left: `${left}px`,
-              top: '10px',
+              top: '14px',
               color: '#FF616D',
             }}
           >
