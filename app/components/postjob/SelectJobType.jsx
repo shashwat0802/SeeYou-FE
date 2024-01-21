@@ -4,7 +4,6 @@ import { useData } from '../../post-job/PostJobContext';
 const SelectJobType = () => {
 
     const {state:{location:{jobType}} , dispatch} = useData();
-    console.log(jobType);
     
     const changeHandler=(type)=> dispatch({type:"LOCATION_FIELDS",payload:{inputField:"jobType",userInput:type}});
   return (

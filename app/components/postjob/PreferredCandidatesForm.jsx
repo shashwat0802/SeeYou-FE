@@ -1,17 +1,25 @@
 import React, { useRef, useState } from 'react'
+import { useData } from '../../post-job/PostJobContext';
 
 const PreferredCandidatesForm = () => {
     const inputRef = useRef();
-    const [preferredLocations,setPreferredLocations] = useState([]);
+    const {state:{location:{preferredLocations}} , dispatch} = useData();
+    
 
     const clickHandler = (event) =>
     {
         if (event.key === 'Enter')
         {
             const location = inputRef.current.value
-            setPreferredLocations(prev=>[...prev,location]);
+            dispatch({type:"LOCATION_FIELDS" , payload:{inputField:"preferredLocations" , userInput:[...preferredLocations,location] }})
             inputRef.current.value = '';
         }
+    }
+
+    const deleteHandler = (location) =>
+    {
+        const filteredLocations = [...preferredLocations].filter(item=>item!==location);
+        dispatch({type:"LOCATION_FIELDS" , payload:{inputField:"preferredLocations" , userInput:filteredLocations }})
     }
 
   return (
@@ -28,7 +36,7 @@ const PreferredCandidatesForm = () => {
                     <span className='text-white text-lg'>{location}</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
                      className="w-6 h-6 text-required hover:cursor-pointer"
-                     onClick={()=>setPreferredLocations(prev=>prev.filter(item=>item!==location))}
+                     onClick={()=>deleteHandler(location)}
                      >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>

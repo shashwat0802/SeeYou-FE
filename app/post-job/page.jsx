@@ -7,6 +7,8 @@ import JobLocation from "../components/postjob/JobLocation";
 
 const page = () => {
     const [step, setStep] = useState(1);
+    const [questionNumber, setQuestionNumber] = useState(1)
+
   return (
     <div className=" my-4 mx-6 space-y-4">
       <ProgressBar
@@ -21,10 +23,8 @@ const page = () => {
             <span className="text-sm text-required">*Marked fields are mandatory</span>
         </header>
         <PostJobProvider>
-          <JobLocation />
+          <JobLocation setQuestionNumber={setQuestionNumber}/>
         </PostJobProvider>
-
-        <button className="px-4 py-3 bg-white-light rounded-xl text-sm font-bold w-full text-primary disabled:brightness-50">Continue</button>
       </main>
     </div>
   )

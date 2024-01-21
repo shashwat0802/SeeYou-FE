@@ -1,29 +1,30 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useData } from '../../post-job/PostJobContext';
 import Input from "./Input";
 
 const JobLocationDetails = () => {
-    const [input,setInput] = useState({streetAddress:"",city:"",state:"",country:""});
+    const {state:{location:{showJobLocation,streetAddress,city,state,country}} , dispatch} = useData();
 
-    const changeHandler = (inputField,text) =>
+    const changeHandler = (inputField,userInput) =>
     {
-        setInput(prev=>({...prev , [inputField]:text }))
+      dispatch({type:"LOCATION_FIELDS" , payload:{inputField, userInput}})
     }
 
   return (
     <section>
             <h1 className="font-black tracking-wide">Enter Job Location details</h1>
             <span className="text-xs text-white-medium font-bold">We’ll include this information in your job post.</span>
-            <Input
-                value={input.streetAddress}
+            { showJobLocation===true && <Input
+                value={streetAddress}
                 changeHandler={changeHandler}
                 required={true}
                 left={114}
                 placeholder="Street address"
                 id="streetAddress"
                 type="address"
-                />
+                />}
             <Input
-                value={input.city}
+                value={city}
                 changeHandler={changeHandler}
                 required={true}
                 left={43}
@@ -32,7 +33,7 @@ const JobLocationDetails = () => {
                 type="city"
                 />
             <Input
-                value={input.state}
+                value={state}
                 changeHandler={changeHandler}
                 required={true}
                 left={148}
@@ -41,7 +42,7 @@ const JobLocationDetails = () => {
                 type="state"
                 />
             <Input
-                value={input.country}
+                value={country}
                 changeHandler={changeHandler}
                 required={true}
                 left={70}

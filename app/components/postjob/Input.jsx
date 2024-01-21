@@ -1,3 +1,5 @@
+import React from "react";
+
 const Input = ({ id, type, value , changeHandler , placeholder, label, required, left }) => {
     return (
       <div className="group w-full md:w-80 lg:w-96">
@@ -8,7 +10,7 @@ const Input = ({ id, type, value , changeHandler , placeholder, label, required,
           {label}
           {required && label && <span className="text-[#FF616D]">*</span>}
         </label>
-        <div className="relative flex items-center custom-input">
+        <main className="relative flex items-center custom-input">
           <input
             id={id}
             value={value}
@@ -34,7 +36,7 @@ const Input = ({ id, type, value , changeHandler , placeholder, label, required,
               *
             </span>
           )}
-        </div>
+        </main>
       </div>
     );
   };
