@@ -4,6 +4,7 @@ import { PostJobProvider } from "./PostJobContext";
 
 import ProgressBar from "../components/ProgressBar";
 import JobLocation from "../components/postjob/JobLocation";
+import Salary from "../components/postjob/salary/Salary";
 
 const page = () => {
     const [step, setStep] = useState(1);
@@ -23,7 +24,8 @@ const page = () => {
             <span className="text-sm text-required">*Marked fields are mandatory</span>
         </header>
         <PostJobProvider>
-          <JobLocation setQuestionNumber={setQuestionNumber}/>
+          {/* <JobLocation setQuestionNumber={setQuestionNumber}/> */}
+          <Salary />
         </PostJobProvider>
       </main>
     </div>

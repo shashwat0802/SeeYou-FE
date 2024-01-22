@@ -22,6 +22,9 @@ module.exports = {
         "highlight-lightest":"#EAF2FF",
         'required':"#FF616D"
       },
+      lineHeight: {
+        '5.5': '1.375rem',
+      }
     },
   },
   plugins: [],
