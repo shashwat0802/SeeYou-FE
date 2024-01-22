@@ -24,7 +24,7 @@ export const PostJobProvider = ({children}) =>
 
     const initialState = {
         location:{jobTitle:"",jobType:"",showJobLocation:"",streetAddress:"",city:"",state:"",country:"",preferredLocations:[]},
-        salary:{jobIndustry:""},
+        salary:{jobIndustry:"",minExperience:""},
     }
 
     const [state,dispatch] = useReducer( PostJobReducer , initialState);

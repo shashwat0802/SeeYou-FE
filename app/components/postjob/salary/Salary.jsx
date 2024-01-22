@@ -1,6 +1,8 @@
 import React from 'react'
-import Label from './Label'
 import { useData } from '../../../post-job/PostJobContext'
+
+import Label from './Label'
+import RadioButtons from "./RadioButtons";
 
 const JobIndustry = () =>
 {
@@ -18,11 +20,24 @@ const JobIndustry = () =>
     )
 }
 
+const MinimumExperience = () =>
+{
+    const optionsArray = ["Internship", "Entry level","Mid senior level", "Senior level", "Director", "Top Executive"];
+    const {state:{salary:{minExperience}} , dispatch } = useData();
+    return (
+        <section className='space-y-3'>
+            <Label text="Select Minimum Required Experience Level" required={true} />
+            <RadioButtons options={optionsArray} inputField={"minExperience"} state={minExperience} dispatch={dispatch} />
+        </section>
+    )
+}
+
 const Salary = () => {
   return (
     <>
         {/* Update the options field dropdown fo Job Industry  */}
         <JobIndustry />
+        <MinimumExperience />
     </>
   )
 }
