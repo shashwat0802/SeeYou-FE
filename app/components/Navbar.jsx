@@ -14,14 +14,21 @@ import { IoIosLogOut } from 'react-icons/io';
 import { FaChevronDown } from 'react-icons/fa';
 import { PiBuildingsBold } from 'react-icons/pi';
 import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const [role, setRole] = useState();
+  const router = useRouter();
   useEffect(() => {
     let cookieRole = Cookies.get('role');
     console.log(cookieRole);
     setRole(cookieRole);
   }, []);
+  const handleLogout = () => {
+    Cookies.remove('jwt');
+    Cookies.remove('role');
+    router.push('/signin');
+  };
   return (
     <>
       {role && role === 'candidate' && (
@@ -109,7 +116,7 @@ const Navbar = () => {
                     <span>My Applications</span>
                   </Link>
                   <Link
-                    href="/candidate/saved-jobs"
+                    href="/saved-jobs"
                     className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                   >
                     <span className="text-xl font-bold">
@@ -129,7 +136,7 @@ const Navbar = () => {
                     <span>My Account</span>
                   </Link>
                   <Link
-                    href="#"
+                    href="/notification/candidate"
                     className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                   >
                     <span className="text-xl">
@@ -148,8 +155,8 @@ const Navbar = () => {
 
                     <span>Settings</span>
                   </Link>
-                  <Link
-                    href="#"
+                  <button
+                    onClick={handleLogout}
                     className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-[#FF616D] text-[#FF616D] text-base"
                   >
                     <span className="text-xl">
@@ -157,7 +164,7 @@ const Navbar = () => {
                     </span>
 
                     <span>Logout</span>
-                  </Link>
+                  </button>
                 </nav>
               </div>
             </aside>
@@ -179,7 +186,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    href="/candidate/saved-jobs"
+                    href="/saved-jobs"
                     className="flex items-center space-x-4  py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                   >
                     <span>My Applications</span>
@@ -195,7 +202,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/notification/candidate"
                     className="flex items-center space-x-4  py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                   >
                     <span className="text-2xl">
@@ -349,7 +356,7 @@ const Navbar = () => {
                     <span>Plans & Pricing</span>
                   </Link>
                   <Link
-                    href="#"
+                    href="/notification"
                     className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                   >
                     <span className="text-xl">
@@ -388,8 +395,8 @@ const Navbar = () => {
 
                     <span>Settings</span>
                   </Link>
-                  <Link
-                    href="#"
+                  <button
+                    onClick={handleLogout}
                     className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-[#FF616D] text-[#FF616D] text-base"
                   >
                     <span className="text-xl">
@@ -397,7 +404,7 @@ const Navbar = () => {
                     </span>
 
                     <span>Logout</span>
-                  </Link>
+                  </button>
                 </nav>
               </div>
             </aside>
