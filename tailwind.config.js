@@ -20,7 +20,8 @@ module.exports = {
         'white-medium':"#E8E9F1",
         'white-darkest':"#C5C6CC",
         "highlight-lightest":"#EAF2FF",
-        'required':"#FF616D"
+        'required':"#FF616D",
+        "success":"#3AC0A0"
       },
       lineHeight: {
         '5.5': '1.375rem',

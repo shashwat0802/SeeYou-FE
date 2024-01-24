@@ -4,6 +4,7 @@ import { useData } from '../../../post-job/PostJobContext'
 import Label from './Label'
 import RadioButtons from "./RadioButtons";
 import Compensation from "./Compensation";
+import AdditionalBenefits from "./AdditionalBenefits";
 
 const JobIndustry = () =>
 {
@@ -80,6 +81,7 @@ const Salary = () => {
         <JobType />
         <ToggleSalarySpecification />
         <Compensation />
+        <AdditionalBenefits />
     </>
   )
 }

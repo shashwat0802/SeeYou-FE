@@ -50,17 +50,17 @@ const CurrencySymbolSelector = ({currency}) =>
 
         case "Won":
             return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 4.99951L8 18.9995L12 8.04299L16 18.9995L20 4.99951" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M21 9.99951H3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M21 13.9995H3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 4.99951L8 18.9995L12 8.04299L16 18.9995L20 4.99951" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M21 9.99951H3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M21 13.9995H3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             
 
         case "Yen":
             return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 18.9995V12.4995M13 12.4995L8 5.99951M13 12.4995L18 5.99951" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M9.6001 16.7996H16.8001" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M9.6001 13.1995H16.8001" stroke="#253D35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13 18.9995V12.4995M13 12.4995L8 5.99951M13 12.4995L18 5.99951" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M9.6001 16.7996H16.8001" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M9.6001 13.1995H16.8001" stroke="#253D35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             
             
