@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useData } from '../../post-job/PostJobContext';
+import { useData } from '../../../post-job/PostJobContext';
 
 const SelectJobType = () => {
 
