@@ -1,5 +1,5 @@
 import React from 'react'
-import { useData } from '../../post-job/PostJobContext';
+import { useData } from '../../../post-job/PostJobContext';
 import Input from "./Input";
 
 const JobLocationDetails = () => {

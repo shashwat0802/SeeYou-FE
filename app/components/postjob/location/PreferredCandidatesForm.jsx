@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react'
-import { useData } from '../../post-job/PostJobContext';
+import React, { useRef } from 'react'
+import { useData } from '../../../post-job/PostJobContext';
 
 const PreferredCandidatesForm = () => {
     const inputRef = useRef();

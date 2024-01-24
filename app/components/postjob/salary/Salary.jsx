@@ -5,6 +5,7 @@ import Label from './Label'
 import RadioButtons from "./RadioButtons";
 import Compensation from "./Compensation";
 import AdditionalBenefits from "./AdditionalBenefits";
+import Button from '../Button';
 
 const JobIndustry = () =>
 {
@@ -72,18 +73,32 @@ const ToggleSalarySpecification = () =>
     )
 }
 
-const Salary = () => {
-  return (
-    <>
-        {/* Update the options field dropdown fo Job Industry  */}
-        <JobIndustry />
-        <MinimumExperience />
-        <JobType />
-        <ToggleSalarySpecification />
-        <Compensation />
-        <AdditionalBenefits />
-    </>
-  )
+const Salary = ({setQuestionNumber}) => 
+{
+    const {state:{salary},dispatch} = useData();
+    const {jobIndustry, minExperience,  jobType,  specifySalary , fromRange, toRange} = salary;
+
+    const isDisabled = () =>
+    {
+        if(specifySalary)
+            return jobIndustry==="" || jobType==="" || minExperience==="" || fromRange==="" || toRange===""
+       
+        else            
+            return jobIndustry==="" || jobType==="" || minExperience==="" 
+    }
+
+    return (
+        <>
+            {/* Update the options field dropdown fo Job Industry  */}
+            <JobIndustry />
+            <MinimumExperience />
+            <JobType />
+            <ToggleSalarySpecification />
+            {specifySalary && <Compensation />}
+            <AdditionalBenefits />
+            <Button isDisabled={isDisabled} clickHandler={()=>setQuestionNumber(3)} />
+        </>
+    )
 }
 
 export default Salary

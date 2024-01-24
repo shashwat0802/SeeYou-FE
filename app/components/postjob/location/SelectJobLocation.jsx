@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import React from 'react'
 
-import { useData } from '../../post-job/PostJobContext';
-import IncludeStreetAddress from "../../../public/images/IncludeStreetAddress.png";
-import NotIncludeStreetAddress from "../../../public/images/NotIncludeStreetAddress.png";
+import { useData } from '../../../post-job/PostJobContext';
+import IncludeStreetAddress from "../../../../public/images/IncludeStreetAddress.png";
+import NotIncludeStreetAddress from "../../../../public/images/NotIncludeStreetAddress.png";
 
 const SelectJobLocation = () => {
 
