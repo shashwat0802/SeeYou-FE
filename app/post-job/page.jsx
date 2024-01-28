@@ -27,9 +27,9 @@ const page = () => {
             <span className="text-sm text-required">*Marked fields are mandatory</span>
         </header>
         <PostJobProvider>
-          {/* {questionNumber==1 && <JobLocation setQuestionNumber={setQuestionNumber}/>}
-          {questionNumber==2 && <Salary setQuestionNumber={setQuestionNumber}/>} */}
-          <Description />
+          {questionNumber==1 && <JobLocation setQuestionNumber={setQuestionNumber}/>}
+          {questionNumber==2 && <Salary setQuestionNumber={setQuestionNumber}/>}
+          {questionNumber==3 && <Description setQuestionNumber={setQuestionNumber} />}
         </PostJobProvider>
       </main>
     </div>

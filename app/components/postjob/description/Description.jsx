@@ -1,6 +1,8 @@
 import React , {useRef} from 'react'
 import Label from '../salary/Label'
 import Skills from "./Skills";
+import Langauges from "./Langauges";
+import Button from '../Button';
 import { useData } from '../../../post-job/PostJobContext'
 
 const JobDescription = () =>
@@ -35,13 +37,20 @@ const RequiredSkills = () =>
     )
 }
 
-const Description = () => {
+const Description = ({setQuestionNumber}) => {
+    const {state:{description}} = useData();
+    const {jobDescription,requiredSkills, languages} = description;
+
+    const isDisabled = () => jobDescription==="" || requiredSkills==="" || languages.length==0
+    
   return (
     <>
         <JobDescription />
         {/* Update the skills to be bullet points later */}
         <RequiredSkills />
         <Skills />
+        <Langauges />
+        <Button isDisabled={isDisabled} clickHandler={()=>setQuestionNumber(4)} />
     </>
   )
 }
