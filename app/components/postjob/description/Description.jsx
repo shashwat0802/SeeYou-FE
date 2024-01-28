@@ -1,5 +1,6 @@
-import React from 'react'
+import React , {useRef} from 'react'
 import Label from '../salary/Label'
+import Skills from "./Skills";
 import { useData } from '../../../post-job/PostJobContext'
 
 const JobDescription = () =>
@@ -40,6 +41,7 @@ const Description = () => {
         <JobDescription />
         {/* Update the skills to be bullet points later */}
         <RequiredSkills />
+        <Skills />
     </>
   )
 }
