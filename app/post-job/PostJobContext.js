@@ -6,7 +6,7 @@ export const PostJobProvider = ({children}) =>
 {
     const PostJobReducer = (state, {type , payload}) =>
     {
-        const {location,salary,description} = state;
+        const {location,salary,description,video} = state;
         switch(type)
         {
             case "LOCATION_FIELDS":
@@ -19,7 +19,10 @@ export const PostJobProvider = ({children}) =>
 
             case "DESCRIPTION_FIELDS":
             
-            return {...state,description:{...description,[payload.inputField]:payload.userInput}}    
+                return {...state,description:{...description,[payload.inputField]:payload.userInput}}   
+                 
+            case "VIDEO_FIELDS":
+                return {...state,video:{...video,[payload.inputField]:payload.userInput}}     
 
             default:
                 return state;
@@ -29,7 +32,8 @@ export const PostJobProvider = ({children}) =>
     const initialState = {
         location:{jobTitle:"",jobType:"",showJobLocation:"",streetAddress:"",city:"",state:"",country:"",preferredLocations:[]},
         salary:{jobIndustry:"",minExperience:"", jobType:"", specifySalary:true , currency:"USD Dollar", period:"Weekly",fromRange:"",toRange:"",benefits:[],addedBenefits:[]},
-        description:{jobDescription:"",requiredSkills:"",skills:[], languages:[]}
+        description:{jobDescription:"",requiredSkills:"",skills:[], languages:[]},
+        video:{descriptionVideo:null,managerVideo:null}
     }
 
     const [state,dispatch] = useReducer( PostJobReducer , initialState);
