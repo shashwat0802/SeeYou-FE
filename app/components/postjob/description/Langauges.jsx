@@ -8,7 +8,7 @@ const Dropdown = ({search,clickHandler}) =>
     "English (UK)","French","German","Hindi","Indonesian","Italian","Japanese","Korean","Portuguese","Russian","Romenian","Spanish",
     "Vietnamese"];
 
-    const filteredLanguages = languages.filter(language=>language.includes(search));
+    const filteredLanguages = languages.filter(language=>(language.toLocaleLowerCase()).includes(search.toLocaleLowerCase()));
     if(filteredLanguages.length==0)
     return;
 
