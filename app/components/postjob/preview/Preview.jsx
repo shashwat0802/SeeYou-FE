@@ -16,13 +16,13 @@ const currencySymbol = (currency) =>
     return currencySymbols.find((c) => c.name === currency)?.symbol
 }
 
-const Heading = ({title,children}) =>
+const Heading = ({title,editHandler,children}) =>
 {
     return (
         <header className='flex space-x-3 items-center mb-6'>
             {children}
             <h1 className=' text-2xl shrink-0 font-black tracking-wide text-white grow'>{title}</h1>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+            <svg onClick={editHandler} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                 <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z" />
                 <path d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z" />
             </svg>
@@ -67,7 +67,7 @@ const JobPostSummary = () =>
             <PreviewField label={"Job Type"} field={jobType} />
             <PreviewField label="Experience Level" field={minExperience} />
             <PreviewField label="Salary Period" field={period} />
-            <PreviewField label="Salary Range" field={`${selectedCurrency} ${salary?.fromRange} - ${selectedCurrency} ${salary?.toRange}`} />
+            {salary?.fromRange &&  <PreviewField label="Salary Range" field={`${selectedCurrency} ${salary?.fromRange} - ${selectedCurrency} ${salary?.toRange}`} />}
             <PreviewField label="Language/s Required" field={languages.join(' ')} />
         
         </section>
@@ -119,14 +119,81 @@ const AdditionalBenefits = ()=>
     )
 }
 
-const Preview = () => 
+const Videos = () =>
 {
-    const {state:{location,salary,description,video}} = useData();
+    const {state:{video}} = useData();
+
+    return (
+        <section className='py-6 space-y-6'>
+            <Heading title="Videos">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-white-medium">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                </svg>
+            </Heading>
+            <aside className='space-y-3'>
+                <h1 className='text-lg'>Video 1 Demo</h1>
+                <video controls width="400" className='w-full rounded-3xl'>
+                    <source src={URL.createObjectURL(video.descriptionVideo)} type={video.descriptionVideo.type} />
+                    Your browser does not support the video tag.
+                </video>
+            </aside>
+            <aside className='space-y-3'>
+                <h1 className='text-lg'>Video 2 Demo</h1>
+                <video controls width="400" className='w-full rounded-3xl'>
+                    <source src={URL.createObjectURL(video.managerVideo)} type={video.managerVideo.type} />
+                    Your browser does not support the video tag.
+                </video>
+            </aside>
+        </section>
+    )
+}
+
+const JobInformation = ({setQuestionNumber})=>
+{
+    const {state:{description:{jobDescription,requiredSkills}}} = useData();
+
+    return (
+        <section className='pb-6 space-y-6'>
+            <Heading title="Job Information" editHandler={()=>setQuestionNumber(3)}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-white-medium">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                </svg>
+            </Heading>
+            <aside className='space-y-2'>
+                <label className="text-white-medium text-xs font-bold">Job Description<span className='text-required'>*</span></label>
+                <article className='px-4 py-3 border border-white-darkest rounded-xl'>
+                    {jobDescription.split('\n').map((line, index) => (
+                    <React.Fragment key={index}>
+                        {line}
+                        <br />
+                    </React.Fragment>
+                    ))}
+                </article>
+            </aside>
+            <aside className='space-y-2'>
+                <label className="text-white-medium text-xs font-bold">List the Required Skills<span className='text-required'>*</span></label>
+                <ul className='px-4 py-3 border border-white-darkest rounded-xl list-disc'>
+                    {requiredSkills.split('\n').map((line, index) => (
+                    <li key={index} className='ml-4'>
+                        {line}
+                    </li>
+                    ))}
+                </ul>
+            </aside>
+        </section>
+    )
+}
+
+const Preview = ({setQuestionNumber}) => 
+{
   return (
     <div className='space-y-3'>
         <JobPostSummary />
         <LocationInformation />
         <AdditionalBenefits />
+        <Videos />
+        <JobInformation setQuestionNumber={setQuestionNumber}/>
     </div>
   )
 }

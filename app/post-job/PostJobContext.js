@@ -31,7 +31,7 @@ export const PostJobProvider = ({children}) =>
 
     const initialState = {
         location:{jobTitle:"",jobType:"",showJobLocation:"",streetAddress:"",city:"",state:"",country:"",preferredLocations:[]},
-        salary:{jobIndustry:"",minExperience:"", jobType:"", specifySalary:true , currency:"USD Dollar", period:"Weekly",fromRange:"",toRange:"",benefits:[],addedBenefits:[]},
+        salary:{jobIndustry:"",minExperience:"", jobType:"", specifySalary:true , currency:"USD Dollar", period:"",fromRange:"",toRange:"",benefits:[],addedBenefits:[]},
         description:{jobDescription:"",requiredSkills:"",skills:[], languages:[]},
         video:{descriptionVideo:null,managerVideo:null}
     }

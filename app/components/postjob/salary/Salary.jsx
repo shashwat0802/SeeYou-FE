@@ -76,12 +76,12 @@ const ToggleSalarySpecification = () =>
 const Salary = ({setQuestionNumber}) => 
 {
     const {state:{salary},dispatch} = useData();
-    const {jobIndustry, minExperience,  jobType,  specifySalary , fromRange, toRange} = salary;
+    const {jobIndustry, minExperience,  jobType,  specifySalary , fromRange, toRange , period} = salary;
 
     const isDisabled = () =>
     {
         if(specifySalary)
-            return jobIndustry==="" || jobType==="" || minExperience==="" || fromRange==="" || toRange===""
+            return jobIndustry==="" || jobType==="" || minExperience==="" || fromRange==="" || toRange==="" || period===""
        
         else            
             return jobIndustry==="" || jobType==="" || minExperience==="" 
