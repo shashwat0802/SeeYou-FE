@@ -24,6 +24,9 @@ export const PostJobProvider = ({children}) =>
             case "VIDEO_FIELDS":
                 return {...state,video:{...video,[payload.inputField]:payload.userInput}}     
 
+            case "TOGGLE_NAVIGATION":
+                return {...state,navigation:payload}    
+
             default:
                 return state;
         }
@@ -33,7 +36,8 @@ export const PostJobProvider = ({children}) =>
         location:{jobTitle:"",jobType:"",showJobLocation:"",streetAddress:"",city:"",state:"",country:"",preferredLocations:[]},
         salary:{jobIndustry:"",minExperience:"", jobType:"", specifySalary:true , currency:"USD Dollar", period:"",fromRange:"",toRange:"",benefits:[],addedBenefits:[]},
         description:{jobDescription:"",requiredSkills:"",skills:[], languages:[]},
-        video:{descriptionVideo:null,managerVideo:null}
+        video:{descriptionVideo:null,managerVideo:null},
+        navigation:false
     }
 
     const [state,dispatch] = useReducer( PostJobReducer , initialState);

@@ -38,7 +38,7 @@ const RequiredSkills = () =>
 }
 
 const Description = ({setQuestionNumber}) => {
-    const {state:{description}} = useData();
+    const {state:{description,navigation}} = useData();
     const {jobDescription,requiredSkills, languages} = description;
 
     const isDisabled = () => jobDescription==="" || requiredSkills==="" || languages.length==0
@@ -50,7 +50,7 @@ const Description = ({setQuestionNumber}) => {
         <RequiredSkills />
         <Skills />
         <Langauges />
-        <Button isDisabled={isDisabled} clickHandler={()=>setQuestionNumber(4)} />
+        <Button isDisabled={isDisabled} clickHandler={()=>{navigation?setQuestionNumber(5):setQuestionNumber(4)}} />
     </>
   )
 }
