@@ -14,7 +14,7 @@ export default function page() {
   const [modalToggle, setModalToggle] = useState(false);
 
   return (
-    <div>
+    <div className="min-h-[70vh]">
       <div className="mt-6 flex items-center gap-4">
         <Image src={profile} height={20} width={20} />
         <p className="font-[800] text-2xl mr-auto">User Information</p>

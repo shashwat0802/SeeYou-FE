@@ -11,7 +11,7 @@ export default function () {
 
   return (
     <>
-      <div className="px-4 py-3">
+      <div className="px-4 py-3 min-h-[70vh]">
         <div className="flex gap-2 items-center text-lg">
           <IoIosArrowBack className="text-[25px]" onClick={goback} />
           <p>Add User</p>

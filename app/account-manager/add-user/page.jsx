@@ -19,7 +19,7 @@ export default function page() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <>
+    <div className="min-h-[70vh]">
       <div className="px-4 py-3">
         <div className="flex gap-2 items-center text-lg">
           <IoIosArrowBack className="text-[25px]" onClick={goback} />
@@ -80,6 +80,6 @@ export default function page() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
