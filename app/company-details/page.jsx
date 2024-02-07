@@ -2,6 +2,64 @@
 
 import Image from "next/image";
 
+const listPoints = [
+  {
+    id: 1,
+    data: "Programming languages: Python, Java, C++, JavaScript",
+  },
+  {
+    id: 2,
+    data: "Web development frameworks: Django, Spring Boot, React",
+  },
+  {
+    id: 3,
+    data: "Cloud computing platforms: AWS, Azure, GCP",
+  },
+  {
+    id: 4,
+    data: "Databases: MySQL, PostgreSQL, MongoDB",
+  },
+  {
+    id: 5,
+    data: "Agile development methodologies: Scrum, Kanban",
+  },
+  {
+    id: 6,
+    data: "Software testing tools: JUnit, Selenium, Postman",
+  },
+  {
+    id: 7,
+    data: "Communication and collaboration tools: Slack, Jira, Confluence",
+  },
+];
+
+const skillsData = [
+    {
+        id: 1,
+        data: 'Problem solving'
+    },
+    {
+        id: 2,
+        data: 'Critical thinking'
+    },
+    {
+        id: 3,
+        data: 'Creativity'
+    },
+    {
+        id: 4,
+        data: 'Teamwork'
+    },
+    {
+        id: 5,
+        data: 'Communication'
+    },
+    {
+        id: 6,
+        data: 'Leadership'
+    },
+]
+
 export default function CompanyDetails() {
   return (
     <div className="min-h-[70vh] px-5 py-6">
@@ -141,6 +199,28 @@ export default function CompanyDetails() {
               <option value="grape">option 04</option>
             </select>
           </div>
+        </div>
+      </div>
+
+      <hr className="border border-[#35383F] my-3" />
+
+      <div className="mb-6">
+        <div className="flex gap-2 items-center">
+          <Image src={require("../../public/images/group.svg")} />
+          <p className="font-bold">About Company</p>
+        </div>
+        <div className="my-5 outline ouline-[#35383F] p-3 rounded-xl">
+          <ul className="list-disc px-4">
+            {listPoints.map((items) => (
+              <li key={items.data}>{items.data}</li>
+            ))}
+          </ul>
+          <p>In addition to the above, John Doe could also list the following skills in his profile:</p>
+          <ul className="list-disc px-4">
+            {skillsData.map((items) => (
+              <li key={items.data}>{items.data}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
