@@ -211,14 +211,13 @@ const CompleteProfileCandidate = () => {
               uploadButton
             )}
           </Upload.Dragger>
-          <p className="text-center text-[#C5C6CC] my-4">OR</p>
-          <button
+          {/* <p className="text-center text-[#C5C6CC] my-4">OR</p> */}
+          {/* <button
             className="flex items-center justify-between p-4 bg-[#1F222A] w-full rounded-lg border border-[#35383F] my-4"
             onClick={() => {
               setWebCamActive(!isWebCamActive);
             }}
           >
-            {/* {isWebCamActive ? 'close' : 'activate'} */}
             <div className="text-left">
               <p className="text-white text-lg">
                 {isWebCamActive ? 'Close Camera' : 'Use your Camera'}
@@ -230,8 +229,8 @@ const CompleteProfileCandidate = () => {
             <div>
               <FaCamera />
             </div>
-          </button>
-          {isWebCamActive && (
+          </button> */}
+          {/* {isWebCamActive && (
             <Webcam screenshotFormat="image/jpeg">
               {({ getScreenshot }) => (
                 <div className="flex justify-center my-4">
@@ -249,7 +248,7 @@ const CompleteProfileCandidate = () => {
                 </div>
               )}
             </Webcam>
-          )}
+          )} */}
         </div>
       </form>
       {/* step 3 */}

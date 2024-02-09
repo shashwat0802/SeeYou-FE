@@ -18,7 +18,7 @@ const ProgressBar = ({ step, setStep, totalSteps, type }) => {
         >
           <FaChevronLeft />
         </button>
-        {type}
+        <span className="capitalize">Fill the Form</span>
       </p>
 
       <div className="w-full bg-[#34373F] rounded-full h-2.5">

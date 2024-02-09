@@ -53,7 +53,7 @@ const UploadVideo = () => {
             <FaPlus />
           </div>
           <p>
-            Upload your photo from device
+            Upload your Video from device
             <span className="text-[#FF616D]"> *</span>
             <br />
             (Max 10 MB)
@@ -97,14 +97,13 @@ const UploadVideo = () => {
           uploadButton
         )}
       </Upload.Dragger>
-      <p className="text-center text-[#C5C6CC] my-4">OR</p>
+      {/* <p className="text-center text-[#C5C6CC] my-4">OR</p>
       <button
         className="flex items-center justify-between p-4 bg-[#1F222A] w-full rounded-lg border border-[#35383F] my-4"
         onClick={() => {
           setWebCamActive(!isWebCamActive);
         }}
       >
-        {/* {isWebCamActive ? 'close' : 'activate'} */}
         <div className="text-left">
           <p className="text-white text-lg">
             {isWebCamActive ? 'Close Camera' : 'Use your Camera'}
@@ -114,8 +113,8 @@ const UploadVideo = () => {
         <div>
           <FaCamera />
         </div>
-      </button>
-      {isWebCamActive && (
+      </button> */}
+      {/* {isWebCamActive && (
         <Webcam videoConstraints={videoConstraints}>
           {({ getScreenshot }) => (
             <div className="flex justify-center my-4">
@@ -133,7 +132,7 @@ const UploadVideo = () => {
             </div>
           )}
         </Webcam>
-      )}
+      )} */}
     </div>
   );
 };
