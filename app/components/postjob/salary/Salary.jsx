@@ -75,13 +75,13 @@ const ToggleSalarySpecification = () =>
 
 const Salary = ({setQuestionNumber}) => 
 {
-    const {state:{salary},dispatch} = useData();
-    const {jobIndustry, minExperience,  jobType,  specifySalary , fromRange, toRange} = salary;
+    const {state:{salary,navigation}} = useData();
+    const {jobIndustry, minExperience,  jobType,  specifySalary , fromRange, toRange , period} = salary;
 
     const isDisabled = () =>
     {
         if(specifySalary)
-            return jobIndustry==="" || jobType==="" || minExperience==="" || fromRange==="" || toRange===""
+            return jobIndustry==="" || jobType==="" || minExperience==="" || fromRange==="" || toRange==="" || period===""
        
         else            
             return jobIndustry==="" || jobType==="" || minExperience==="" 
@@ -96,7 +96,7 @@ const Salary = ({setQuestionNumber}) =>
             <ToggleSalarySpecification />
             {specifySalary && <Compensation />}
             <AdditionalBenefits />
-            <Button isDisabled={isDisabled} clickHandler={()=>setQuestionNumber(3)} />
+            <Button isDisabled={isDisabled} clickHandler={()=>{navigation?setQuestionNumber(5):setQuestionNumber(3)}} />
         </>
     )
 }

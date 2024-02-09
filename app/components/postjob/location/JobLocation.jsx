@@ -39,7 +39,7 @@ const LoadQuestion = ({jobType}) =>
 }
 
 const JobLocation = ({setQuestionNumber}) => {
-    const {state:{location } , dispatch} = useData();
+    const {state:{location , navigation} , dispatch} = useData();
     const {jobTitle , jobType, showJobLocation, streetAddress, city, state, country} = location;
 
     const isDisabled = () =>
@@ -58,7 +58,7 @@ const JobLocation = ({setQuestionNumber}) => {
         <Input id="jobTitle" value={jobTitle} changeHandler={(inputField,userInput)=>dispatch({type:"LOCATION_FIELDS" , payload:{inputField, userInput} })} type={"text"} placeholder={"Job title (maximum 160 Characters)"} label="Job Title" required={true}/>
         <SelectJobType />
         <LoadQuestion jobType={jobType}/>
-        <Button isDisabled={isDisabled} clickHandler={()=>setQuestionNumber(2)} />
+        <Button isDisabled={isDisabled} clickHandler={()=>{navigation?setQuestionNumber(5):setQuestionNumber(2)}} />
     </>
   )
 }
