@@ -14,6 +14,8 @@ module.exports = {
       },
       colors: {
         'primary':"#181A20",
+        'primary-light':"#34373F",
+        'bg-light':"#1F222A",
         'white-20': '#ffffff33',
         'white-9': 'rgba(255, 255, 255, 0.09)',
         'white-light':"#F8F9FE",

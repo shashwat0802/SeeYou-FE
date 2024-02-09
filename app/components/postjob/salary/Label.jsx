@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Label = ({text,required}) => {
+const Label = ({text,required,bold}) => {
   return (
-    <label className=' leading-5.5'>
+    <label className={` ${bold?"text-xs font-bold text-white-medium":"leading-5.5"} `}>
         {text}
         {required && <span className='text-required'>*</span>}
     </label>
