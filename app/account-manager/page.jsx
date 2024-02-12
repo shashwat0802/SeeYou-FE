@@ -20,7 +20,7 @@ export default function AccManager() {
 
   return (
     <>
-      <div className="px-4 py-7">
+      <div className="px-4 py-7 h-[70vh]">
         <div>
           <p className="text-xs font-[300]">User: Dave Dus</p>
           <p className="text-[18px] font-[300]">Owner: davedus@google</p>
@@ -139,7 +139,7 @@ export default function AccManager() {
             <tr className="h-[40px]">
               <td className="border-none text-[14px] pl-2">rusho@gmail..</td>
               <td className="border-none text-[14px]">
-                <Link href={""} className="text-[#2897FF]">
+                <Link href={"/account-manager/status-requested"} className="text-[#2897FF]">
                   Requested
                 </Link>
               </td>
