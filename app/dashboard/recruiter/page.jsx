@@ -1,19 +1,45 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import Navbar from "../../components/Navbar";
 
 const TopTab = () =>
 {
+  const [check,setCheck] = useState(true);
+
   return (
     <section className="grid grid-cols-2 -mx-2.5">
         <label htmlFor="openPause" className="flex flex-col items-center" >
-          <input className="peer sr-only" type="radio" name="openClosed" id="openPause" />
+          <input className="peer sr-only" type="radio" checked={check} name="openClosed" id="openPause" onChange={()=>setCheck(true)} />
           <h1 className=" peer-checked:text-white text-[#35383F] shrink-0 text-lg  mb-3">Open & Paused(4)</h1>
           <aside className="self-stretch bg-[#35383F] peer-checked:bg-white rounded-full mt-[1px] h-0.5 peer-checked:h-1 peer-checked:mt-0"></aside>
         </label>
         <label htmlFor="expiredClosed" className="flex flex-col items-center">
-          <input className="peer sr-only" type="radio" name="openClosed" id="expiredClosed" />
+          <input className="peer sr-only" type="radio" checked={!check} name="openClosed" id="expiredClosed" onChange={()=>setCheck(false)} />
           <h1 className=" peer-checked:text-white text-[#35383F] text-lg  mb-3">Expired/Closed(0)</h1>
           <aside className=" self-stretch bg-[#35383F] peer-checked:bg-white rounded-full mt-[1px] h-0.5 peer-checked:h-1 peer-checked:mt-0"></aside>
         </label>
+      </section>
+  )
+}
+const Filters = () =>
+{
+  const [selectedFilter,setSelectedFilter] = useState("Recently Edited");
+  const filters = ["Recently Edited","In Review","Open","Paused","Expiring Soon","Ascending (A to Z)","Descending (Z to A)"];
+
+  return (
+    <section className="flex justify-between relative">
+        <h1 className="text-sm font-extrabold">2 Jobs Posted</h1>
+        <button className="group outline-none text-left">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.3} stroke="currentColor" className="size-4 text-white group-focus:text-success">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
+          </svg>
+          <ul className="absolute z-10 top-6 right-0 p-3 bg-bg-light rounded-2xl text-sm text-white-light hidden group-focus:block" >
+          {filters.map((filter,index)=>(
+            <li key={index} className={` ${filter===selectedFilter?"bg-primary-light":"hover:bg-primary-light"} rounded-xl py-4 px-3`} onClick={()=>setSelectedFilter(filter)}>{filter}</li>
+          ))}
+        </ul>
+        </button>
+        
       </section>
   )
 }
@@ -21,6 +47,7 @@ const TopTab = () =>
 const RecruiterDashboard = () => {
   return (
     <div className="mx-6 pt-4 space-y-6">
+      {/* <Navbar /> */}
       <header className="grid grid-cols-2 items-end">
         <aside>
           <h1 className=" text-xs">Welcome</h1>
@@ -38,7 +65,8 @@ const RecruiterDashboard = () => {
         <input className="outline-none grow bg-transparent text-sm" placeholder="Filter & Search Jobs"/>
       </aside>
       <TopTab />
-      
+      <Filters />
+
     </div>
   )
 };
