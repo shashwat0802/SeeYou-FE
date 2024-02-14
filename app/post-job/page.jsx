@@ -24,10 +24,10 @@ const page = () => {
         type="Post a job"
       />
       <main className="pt-6 space-y-6">
-        <header>
-            <h1 className="text-2xl font-black tracking-wide">{true?"Upload Job Post Videos":"Create a Job Post"}</h1>
+        {questionNumber!==5 && <header>
+            <h1 className="text-2xl font-black tracking-wide">{questionNumber===4?"Upload Job Post Videos":"Create a Job Post"}</h1>
             <span className="text-sm text-required">*Marked fields are mandatory</span>
-        </header>
+        </header>}
         <PostJobProvider>
           {questionNumber==1 && <JobLocation setQuestionNumber={setQuestionNumber}/>}
           {questionNumber==2 && <Salary setQuestionNumber={setQuestionNumber}/>}
