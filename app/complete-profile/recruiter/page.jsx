@@ -7,6 +7,7 @@ import ProgressBar from '@/app/components/ProgressBar';
 import Details from "../../components/recruiterProfile/Details";
 import CompanyInformation from "../../components/recruiterProfile/CompanyInformation";
 import CompanyLogo from "../../components/recruiterProfile/CompanyLogo";
+import AboutCompany from "../../components/recruiterProfile/AboutCompany";
 
 const heading = (step)=>
 {
@@ -42,6 +43,7 @@ const CompleteProfileRecruiter = () => {
           {step===1 && <Details setStep={setStep}/>}
           {step===2 && <CompanyInformation setStep={setStep}/>}
           {step===3 && <CompanyLogo setStep={setStep}/>}
+          {step===4 && <AboutCompany setStep={setStep} /> }
         </CompleteRecruiterProfileProvider>
 
       </main>

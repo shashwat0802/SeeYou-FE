@@ -6,7 +6,7 @@ export const CompleteRecruiterProfileProvider = ({children}) =>
 {
     const RecruiterProfileReducer = (state, {type , payload}) =>
     {
-        const {details,companyInfo,logo} = state;
+        const {details,companyInfo,aboutCompany} = state;
         switch(type)
         {
             case "DETAILS_FIELDS":
@@ -20,6 +20,8 @@ export const CompleteRecruiterProfileProvider = ({children}) =>
             case "LOGO":
                 return {...state,logo:payload}
 
+            case "ABOUT_COMPANY_FIELDS":
+                return {...state,aboutCompany:{...aboutCompany,[payload.inputField]:payload.userInput}} ;
             default:
                 return state;
         }
@@ -28,7 +30,8 @@ export const CompleteRecruiterProfileProvider = ({children}) =>
     const initialState = {
         details:{type:"",position:"",linkedin:""},
         companyInfo:{companyName:"",registrationNumber:"",vat:"",industry:"",numberOfEmployees:"",city:"",state:"",country:""},
-        logo:""
+        logo:"",
+        aboutCompany:{about:"",companyPPT:"",websiteurl:""}
     }
 
     const [state,dispatch] = useReducer( RecruiterProfileReducer , initialState);
