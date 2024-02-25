@@ -8,6 +8,8 @@ import Details from "../../components/recruiterProfile/Details";
 import CompanyInformation from "../../components/recruiterProfile/CompanyInformation";
 import CompanyLogo from "../../components/recruiterProfile/CompanyLogo";
 import AboutCompany from "../../components/recruiterProfile/AboutCompany";
+import CompanyBrands from "../../components/recruiterProfile/CompanyBrands";
+import CompanyVideo from "../../components/recruiterProfile/CompanyVideo";
 
 const heading = (step)=>
 {
@@ -31,20 +33,22 @@ const CompleteProfileRecruiter = () => {
       <ProgressBar
         step={step}
         setStep={setStep}
-        totalSteps={5}
+        totalSteps={7}
         type="Complete Details"
       />
       <main className="pt-6 space-y-6">
         <header>
           <h1 className="text-2xl font-black tracking-wide">{heading(step)}</h1>
-          <span className="text-sm text-required">*Marked fields are mandatory</span>
+          {step!==5 && <span className="text-sm text-required">*Marked fields are mandatory</span>}
         </header>
         <CompleteRecruiterProfileProvider>
-          {step===1 && <Details setStep={setStep}/>}
+          {/* {step===1 && <Details setStep={setStep}/>}
           {step===2 && <CompanyInformation setStep={setStep}/>}
           {step===3 && <CompanyLogo setStep={setStep}/>}
-          {step===4 && <AboutCompany setStep={setStep} /> }
-        </CompleteRecruiterProfileProvider>
+          {step===4 && <AboutCompany setStep={setStep} /> } */}
+          {/* {step===5 && <CompanyBrands setStep={setStep} />} */}
+          <CompanyVideo setStep={setStep} />
+        </CompleteRecruiterProfileProvider >
 
       </main>
     </div>
