@@ -5,7 +5,7 @@ const Input = ({ id, type, value , changeHandler , placeholder, label, required,
       <div className="group w-full md:w-80 lg:w-96">
         <label
           htmlFor={id}
-          className="inline-block w-full text-sm font-medium transition-all duration-200 ease-in-out text-white-medium my-2"
+          className="inline-block w-full text-sm font-medium transition-all duration-200 ease-in-out text-white-medium my-2 empty:hidden"
         >
           {label}
           {required && label && <span className="text-[#FF616D]">*</span>}
