@@ -10,6 +10,7 @@ import CompanyLogo from "../../components/recruiterProfile/CompanyLogo";
 import AboutCompany from "../../components/recruiterProfile/AboutCompany";
 import CompanyBrands from "../../components/recruiterProfile/CompanyBrands";
 import CompanyVideo from "../../components/recruiterProfile/CompanyVideo";
+import TermsAndCondition from "../../components/recruiterProfile/TermsAndCondition";
 
 const heading = (step)=>
 {
@@ -37,17 +38,18 @@ const CompleteProfileRecruiter = () => {
         type="Complete Details"
       />
       <main className="pt-6 space-y-6">
-        <header>
+        <header className={step===7?"hidden":""}>
           <h1 className="text-2xl font-black tracking-wide">{heading(step)}</h1>
           {step!==5 && <span className="text-sm text-required">*Marked fields are mandatory</span>}
         </header>
         <CompleteRecruiterProfileProvider>
-          {/* {step===1 && <Details setStep={setStep}/>}
+          {step===1 && <Details setStep={setStep}/>}
           {step===2 && <CompanyInformation setStep={setStep}/>}
           {step===3 && <CompanyLogo setStep={setStep}/>}
-          {step===4 && <AboutCompany setStep={setStep} /> } */}
-          {/* {step===5 && <CompanyBrands setStep={setStep} />} */}
-          <CompanyVideo setStep={setStep} />
+          {step===4 && <AboutCompany setStep={setStep} /> }
+          {step===5 && <CompanyBrands setStep={setStep} />}
+          {step===6 && <CompanyVideo setStep={setStep} />}
+          {step===7 && <TermsAndCondition setStep={setStep} />}
         </CompleteRecruiterProfileProvider >
 
       </main>

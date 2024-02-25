@@ -15,7 +15,7 @@ const CompanyVideo = ({setStep}) => {
             </video>
             <button className='text-red-600 font-medium text-lg hover:underline mt-4'
              onClick={()=>dispatch({type:"VIDEO",payload:null})}>Clear Video</button>
-            <Button isDisabled={()=>false} onClick={()=>setStep(7)} />
+            <Button isDisabled={()=>false} clickHandler={()=>setStep(7)} />
         </section>
     )
 
@@ -31,7 +31,7 @@ const CompanyVideo = ({setStep}) => {
                 </aside>
                 <p className='text-center mt-3 mx-1'>Upload 1-3 min video with the Owner / Founder / CEO / HR Director</p>
             </label>
-            <Button isDisabled={()=>true} onClick={()=>setStep(7)} />
+            <Button isDisabled={()=>true} clickHandler={()=>setStep(7)} />
         </section>
   )
 }
