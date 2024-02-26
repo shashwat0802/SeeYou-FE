@@ -1,7 +1,8 @@
 import React from 'react'
-import Input from '../postjob/location/Input';
-import Button from '../postjob/Button';
-import { useProfileData } from '../../complete-profile/recruiter/CompleteRecruiterProfileContext'
+import { useProfileData } from '../../../complete-profile/recruiter/CompleteRecruiterProfileContext';
+import Input from '../../postjob/location/Input';
+import Button from '../../postjob/Button';
+
 
 const Attachment=({companyPPT,dispatch})=>
 {

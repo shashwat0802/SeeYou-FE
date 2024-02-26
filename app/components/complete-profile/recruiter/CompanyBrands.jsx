@@ -1,6 +1,6 @@
 import React from 'react'
-import { useProfileData } from '../../complete-profile/recruiter/CompleteRecruiterProfileContext'
-import Button from '../postjob/Button';
+import { useProfileData } from '../../../complete-profile/recruiter/CompleteRecruiterProfileContext';
+import Button from '../../postjob/Button';
 import Image from 'next/image';
 
 const CompanyBrands = ({setStep}) => {

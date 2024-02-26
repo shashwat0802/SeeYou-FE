@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from '../postjob/Button';
-import {useProfileData} from "../../complete-profile/recruiter/CompleteRecruiterProfileContext";
+import { useProfileData } from '../../../complete-profile/recruiter/CompleteRecruiterProfileContext';
+import Button from '../../postjob/Button';
 
 const CompanyVideo = ({setStep}) => {
     const {state:{companyVideo} , dispatch} = useProfileData(); 

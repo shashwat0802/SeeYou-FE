@@ -4,13 +4,10 @@ import { useState } from 'react';
 import {CompleteCandidateProfileProvider} from "./CompleteCandidateProfileContext";
 
 import ProgressBar from '@/app/components/ProgressBar';
-import Details from "../../components/recruiterProfile/Details";
-import CompanyInformation from "../../components/recruiterProfile/CompanyInformation";
-import CompanyLogo from "../../components/recruiterProfile/CompanyLogo";
-import AboutCompany from "../../components/recruiterProfile/AboutCompany";
-import CompanyBrands from "../../components/recruiterProfile/CompanyBrands";
-import CompanyVideo from "../../components/recruiterProfile/CompanyVideo";
-import TermsAndCondition from "../../components/recruiterProfile/TermsAndCondition";
+import CandidateProfile from "../../components/complete-profile/candidate/CandidateProfile";
+import CompanyLogo from "../../components/complete-profile/recruiter/CompanyLogo";
+import CompanyVideo from "../../components/complete-profile/recruiter/CompanyVideo";
+import TermsAndCondition from "../../components/complete-profile/recruiter/TermsAndCondition";
 
 const heading = (step)=>
 {
@@ -50,7 +47,7 @@ const CompleteProfileCandidate = () => {
           {step===5 && <CompanyBrands setStep={setStep} />}
           {step===6 && <CompanyVideo setStep={setStep} />}
           {step===7 && <TermsAndCondition setStep={setStep} />} */}
-          <h1>Challeya</h1>
+          <CandidateProfile />
         </CompleteCandidateProfileProvider >
 
       </main>
