@@ -5,7 +5,7 @@ import Input from '../../postjob/location/Input'
 import Skills from '../../postjob/description/Skills'
 import Button from '../../postjob/Button'
 
-const CandidateProfile = () => {
+const CandidateProfile = ({setStep}) => {
     const {state:{details:{linkedin,bio,experience,skills,resume,portfolioLink}} , dispatch} = useProfileData();
 
     const isDisabled = () =>linkedin==="" || bio==="" || experience===""
@@ -24,7 +24,7 @@ const CandidateProfile = () => {
         <Skills skills={skills} dispatch={dispatch} type="DETAILS_FIELDS" />
         <UploadPresentation state={resume} dispatch={dispatch} type="DETAILS_FIELDS" inputField="resume" label="Add Resume" resume={true} />
         <Input id="portfolioLink" value={portfolioLink} changeHandler={(inputField,userInput)=>dispatch({type:"DETAILS_FIELDS" , payload:{inputField, userInput} })} type={"text"} placeholder={"Portfolio/Resume Website Link URL"} label="My Personal Website/Portfolio"  required={false}/>
-        <Button isDisabled={isDisabled} clickHandler={()=>setStep(5)} />
+        <Button isDisabled={isDisabled} clickHandler={()=>setStep(2)} />
     </>
   )
 }

@@ -6,19 +6,15 @@ export const CompleteCandidateProfileProvider = ({children}) =>
 {
     const CandidateProfileReducer = (state, {type , payload}) =>
     {
-        const {details,companyInfo,aboutCompany,companyVideo} = state;
+        const {details,aboutCompany} = state;
         switch(type)
         {
             case "DETAILS_FIELDS":
             
                 return {...state,details:{...details,[payload.inputField]:payload.userInput}} ;
 
-            case "COMPANY_INFO_FIELDS":
-
-                return {...state,companyInfo:{...companyInfo,[payload.inputField]:payload.userInput}} ;
-
-            case "LOGO":
-                return {...state,logo:payload}
+            case "PROFILE_PHOTO":
+                return {...state,profilePhoto:payload}
 
             case "ABOUT_COMPANY_FIELDS":
                 return {...state,aboutCompany:{...aboutCompany,[payload.inputField]:payload.userInput}} ;
@@ -37,7 +33,7 @@ export const CompleteCandidateProfileProvider = ({children}) =>
     const initialState = {
         details:{linkedin:"",bio:"",experience:"",skills:[],resume:"",portfolioLink:""},
         companyInfo:{companyName:"",registrationNumber:"",vat:"",industry:"",numberOfEmployees:"",city:"",state:"",country:""},
-        logo:"",
+        profilePhoto:"",
         aboutCompany:{about:"",companyPPT:"",websiteurl:""},
         companyBrands:[],
         companyVideo:null
