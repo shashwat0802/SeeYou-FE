@@ -1,12 +1,9 @@
 import React , {useState} from 'react'
+import Button from '../../postjob/Button'
 
-const TermsAndCondition = () => {
-    const [check,setCheck] = useState(false);
-
-    const clickHandler = () => {
-        // Call API here
-    }
-  return (
+const AllTerms = ({check,setCheck})=>
+{
+    return (
     <div className=''>
         <h1 className=' text-2xl font-black leading-8 tracking-wide -mt-4 pb-2'>Terms & Conditions</h1>
         <p>SeeYou is a job search platform that connects companies with candidates. By using SeeYou, you agree to the following terms and conditions:</p>
@@ -74,7 +71,7 @@ const TermsAndCondition = () => {
                 </ol>
             </li>
         </ol>
-        <section className='flex items-center space-x-3 pb-2 my-4 ml-1'>
+        <section className='flex items-center space-x-3 pb-2 mt-6 ml-1'>
             <label htmlFor='terms'>
                 <input id='terms' type='checkbox' checked={check} className=' sr-only peer' onChange={()=>setCheck(prev=>!prev)}/>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-4 h-4 p-0.5 text-primary box-content border-2 border-white-medium rounded-md peer-checked:text-white">
@@ -83,8 +80,21 @@ const TermsAndCondition = () => {
             </label>
             <p className='text-white-light'>I agree to all SeeYou’s <b>Terms & Condition*</b> </p>
         </section>
-        <button className=' bg-white-light px-4 py-3 rounded-xl text-sm font-semibold text-primary disabled:brightness-50 hover:cursor-not-allowed w-full' disabled={!check} onClick={clickHandler}>Continue</button>
     </div>
+    )
+}
+
+const TermsAndCondition = () => {
+    const [check,setCheck] = useState(false);
+
+    const clickHandler = () => {
+        // Call API here
+    }
+  return (
+    <>
+        <AllTerms check={check} setCheck={setCheck} />
+        <Button isDisabled={()=>!check} clickHandler={clickHandler} />
+    </>
   )
 }
 
