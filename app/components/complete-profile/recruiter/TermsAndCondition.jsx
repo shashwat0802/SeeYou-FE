@@ -1,7 +1,7 @@
 import React , {useState} from 'react'
 import Button from '../../postjob/Button'
 
-const AllTerms = ({check,setCheck})=>
+export const AllTerms = ({check,setCheck})=>
 {
     return (
     <div className=''>

@@ -16,7 +16,7 @@ const ProfileVideo = ({setStep}) => {
             </video>
             <button className='text-red-600 font-medium text-lg hover:underline mt-4'
              onClick={()=>dispatch({type:"VIDEO",payload:null})}>Clear Video</button>
-            <Button isDisabled={()=>false} clickHandler={()=>setStep(7)} />
+            <Button isDisabled={()=>false} clickHandler={()=>setStep(4)} />
         </section>
     )
 
@@ -32,7 +32,7 @@ const ProfileVideo = ({setStep}) => {
                 </aside>
                 <p className='text-center mt-3 mx-1 max-w-52'>Upload 1-3 min video talking about yourself</p>
             </label>
-            <Button isDisabled={()=>true} clickHandler={()=>setStep(7)} />
+            <Button isDisabled={()=>true} clickHandler={()=>setStep(4)} />
         </section>
   )
 }
