@@ -16,7 +16,7 @@ const page = () => {
   useEffect(()=>{window.scrollTo(0, 0)},[questionNumber])
 
   return (
-    <div className=" my-4 mx-6 space-y-4">
+    <div className=" mb-4 mx-6 space-y-4">
       <ProgressBar
         step={step}
         setStep={setStep}
