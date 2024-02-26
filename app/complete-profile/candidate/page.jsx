@@ -47,7 +47,7 @@ const CompleteProfileCandidate = () => {
           {step===5 && <CompanyBrands setStep={setStep} />}
           {step===6 && <CompanyVideo setStep={setStep} />}
           {step===7 && <TermsAndCondition setStep={setStep} />} */}
-          <CandidateProfile />
+          <CandidateProfile setStep={setStep} />
         </CompleteCandidateProfileProvider >
 
       </main>

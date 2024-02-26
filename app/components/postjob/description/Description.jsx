@@ -38,8 +38,8 @@ const RequiredSkills = () =>
 }
 
 const Description = ({setQuestionNumber}) => {
-    const {state:{description,navigation}} = useData();
-    const {jobDescription,requiredSkills, languages} = description;
+    const {state:{description,navigation},dispatch} = useData();
+    const {jobDescription,requiredSkills,skills, languages} = description;
 
     const isDisabled = () => jobDescription==="" || requiredSkills==="" || languages.length==0
     
@@ -48,7 +48,7 @@ const Description = ({setQuestionNumber}) => {
         <JobDescription />
         {/* Update the skills to be bullet points later */}
         <RequiredSkills />
-        <Skills />
+        <Skills skills={skills} dispatch={dispatch} type="DESCRIPTION_FIELDS" />
         <Langauges />
         <Button isDisabled={isDisabled} clickHandler={()=>{navigation?setQuestionNumber(5):setQuestionNumber(4)}} />
     </>

@@ -1,17 +1,14 @@
 import React , {useRef} from 'react'
-import {useData} from "../../../post-job/PostJobContext";
 
-const Skills = () => {
+const Skills = ({skills,dispatch,type}) => {
     const inputRef = useRef();
-    const {state:{description:{skills}} , dispatch} = useData();
     
-
     const clickHandler = (event) =>
     {
         if (event.key === 'Enter')
         {
             const skill = inputRef.current.value
-            dispatch({type:"DESCRIPTION_FIELDS" , payload:{inputField:"skills" , userInput:[...skills,skill] }})
+            dispatch({type , payload:{inputField:"skills" , userInput:[...skills,skill] }})
             inputRef.current.value = '';
         }
     }
@@ -19,7 +16,7 @@ const Skills = () => {
     const deleteHandler = (skill) =>
     {
         const filteredSkills = [...skills].filter(item=>item!==skill);
-        dispatch({type:"DESCRIPTION_FIELDS" , payload:{inputField:"skills" , userInput:filteredSkills }})
+        dispatch({type:type , payload:{inputField:"skills" , userInput:filteredSkills }})
     }
 
   return (
@@ -32,7 +29,7 @@ const Skills = () => {
             <input ref={inputRef} className='grow text-sm  bg-primary  outline-none ' placeholder='Search and add "skills" ' onKeyDown={clickHandler}/>
         </aside>
         <small className='text-[10px] text-[#8F9098]'>Add maximum 50 skills with 100 characters tag limit</small>
-        <ul className=' gap-3 flex flex-wrap'>
+        <ul className=' gap-3 flex flex-wrap mt-2 empty:mt-0'>
             {skills?.map((skill , index)=>(
                 <li key={index} className='flex grow justify-between bg-[#1F222A] items-center p-4 space-x-4 border border-[#35383F] rounded-2xl'>
                     <span className='text-white text-lg'>{skill}</span>

@@ -35,7 +35,7 @@ export const CompleteCandidateProfileProvider = ({children}) =>
     }
 
     const initialState = {
-        details:{type:"",position:"",linkedin:""},
+        details:{linkedin:"",bio:"",experience:"",skills:[],resume:"",portfolioLink:""},
         companyInfo:{companyName:"",registrationNumber:"",vat:"",industry:"",numberOfEmployees:"",city:"",state:"",country:""},
         logo:"",
         aboutCompany:{about:"",companyPPT:"",websiteurl:""},
