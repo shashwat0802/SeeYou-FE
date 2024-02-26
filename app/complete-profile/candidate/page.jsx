@@ -6,7 +6,7 @@ import {CompleteCandidateProfileProvider} from "./CompleteCandidateProfileContex
 import ProgressBar from '@/app/components/ProgressBar';
 import CandidateProfile from "../../components/complete-profile/candidate/CandidateProfile";
 import UploadProfilePhoto from "../../components/complete-profile/candidate/UploadProfilePhoto";
-import CompanyVideo from "../../components/complete-profile/recruiter/CompanyVideo";
+import ProfileVideo from "../../components/complete-profile/candidate/ProfileVideo";
 import TermsAndCondition from "../../components/complete-profile/recruiter/TermsAndCondition";
 
 const heading = (step)=>
@@ -15,11 +15,8 @@ const heading = (step)=>
   {
     case 1: return "Complete your Profile";
     case 2: return "Upload your Profile Photo"
-    case 3: return "Upload company logo"
-    case 4: return "About our company"
-    case 5: return "Brand/s of the company"
-    case 6: return "Upload Company Presentation Video"
-    case 7: return "Terms & Conditions"
+    case 3: return "Upload your Profile Video"
+    case 4: return "Terms & Conditions"
     default: return "Are You?"
   }
 }
@@ -42,6 +39,7 @@ const CompleteProfileCandidate = () => {
         <CompleteCandidateProfileProvider>
           {step===1 && <CandidateProfile setStep={setStep} />}
           {step===2 && <UploadProfilePhoto setStep={setStep} />}
+          {step===3 && <ProfileVideo setStep={setStep} />}
         </CompleteCandidateProfileProvider >
 
       </main>

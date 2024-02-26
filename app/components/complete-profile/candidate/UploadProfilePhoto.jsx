@@ -3,8 +3,6 @@ import Image from 'next/image';
 import {useProfileData} from "../../../complete-profile/candidate/CompleteCandidateProfileContext";
 import Button from '../../postjob/Button';
 
-
-
 const UploadProfilePhoto = ({setStep}) => {
     const {state:{profilePhoto},dispatch} = useProfileData();
 
@@ -22,7 +20,7 @@ const UploadProfilePhoto = ({setStep}) => {
                     </svg>
                     <p className='text-center text-sm'>Upload your photo from device<span className='text-required'>*</span> <br /> (Max 10 MB) </p>
                 </>)
-                :<Image src={URL.createObjectURL(profilePhoto)} alt='company profilePhoto' width={340} height={340} className=' size-full' />}
+                :<Image src={URL.createObjectURL(profilePhoto)} alt='company profilePhoto' width={340} height={340} className=' size-full object-cover' />}
             </label>
         </section>
 
@@ -33,7 +31,7 @@ const UploadProfilePhoto = ({setStep}) => {
             <span >Remove</span>
         </button>}
 
-        <Button isDisabled={isDisabled} clickHandler={()=>setStep(4)} />
+        <Button isDisabled={isDisabled} clickHandler={()=>setStep(3)} />
     </>
   )
 }
