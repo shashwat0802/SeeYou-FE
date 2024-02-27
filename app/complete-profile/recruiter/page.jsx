@@ -4,13 +4,13 @@ import { useState } from 'react';
 import {CompleteRecruiterProfileProvider} from "./CompleteRecruiterProfileContext";
 
 import ProgressBar from '@/app/components/ProgressBar';
-import Details from "../../components/recruiterProfile/Details";
-import CompanyInformation from "../../components/recruiterProfile/CompanyInformation";
-import CompanyLogo from "../../components/recruiterProfile/CompanyLogo";
-import AboutCompany from "../../components/recruiterProfile/AboutCompany";
-import CompanyBrands from "../../components/recruiterProfile/CompanyBrands";
-import CompanyVideo from "../../components/recruiterProfile/CompanyVideo";
-import TermsAndCondition from "../../components/recruiterProfile/TermsAndCondition";
+import Details from "../../components/complete-profile/recruiter/Details";
+import CompanyInformation from "../../components/complete-profile/recruiter/CompanyInformation";
+import CompanyLogo from "../../components/complete-profile/recruiter/CompanyLogo";
+import AboutCompany from "../../components/complete-profile/recruiter/AboutCompany";
+import CompanyBrands from "../../components/complete-profile/recruiter/CompanyBrands";
+import CompanyVideo from "../../components/complete-profile/recruiter/CompanyVideo";
+import TermsAndCondition from "../../components/complete-profile/recruiter/TermsAndCondition";
 
 const heading = (step)=>
 {

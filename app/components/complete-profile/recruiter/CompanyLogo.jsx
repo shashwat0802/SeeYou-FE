@@ -1,7 +1,9 @@
 import React from 'react'
 import Image from 'next/image';
-import Button from '../postjob/Button';
-import { useProfileData } from '../../complete-profile/recruiter/CompleteRecruiterProfileContext'
+import { useProfileData } from '../../../complete-profile/recruiter/CompleteRecruiterProfileContext';
+import Button from '../../postjob/Button';
+
+
 
 const CompanyLogo = ({setStep}) => {
     const {state:{logo},dispatch} = useProfileData();
