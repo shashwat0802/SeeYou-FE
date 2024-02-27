@@ -38,11 +38,11 @@ const CompleteProfileCandidate = () => {
           {step!==4 && <span className="text-sm text-required">*Marked fields are mandatory</span>}
         </header>
         <CompleteCandidateProfileProvider>
-          {/* {step===1 && <CandidateProfile setStep={setStep} />}
+          {step===1 && <CandidateProfile setStep={setStep} />}
           {step===2 && <UploadProfilePhoto setStep={setStep} />}
           {step===3 && <ProfileVideo setStep={setStep} />}
-          {step===4 && <TermsAndConditions setStep={setStep} />} */}
-          <ProfileVisibility />
+          {step===4 && <TermsAndConditions setStep={setStep} />}
+          {step===5 && <ProfileVisibility />}
         </CompleteCandidateProfileProvider >
 
       </main>
