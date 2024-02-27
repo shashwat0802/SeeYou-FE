@@ -6,11 +6,10 @@ export const CompleteCandidateProfileProvider = ({children}) =>
 {
     const CandidateProfileReducer = (state, {type , payload}) =>
     {
-        const {details,aboutCompany} = state;
+        const {details} = state;
         switch(type)
         {
             case "DETAILS_FIELDS":
-            
                 return {...state,details:{...details,[payload.inputField]:payload.userInput}} ;
 
             case "PROFILE_PHOTO":
@@ -18,6 +17,9 @@ export const CompleteCandidateProfileProvider = ({children}) =>
 
             case "VIDEO":
                 return {...state,profileVideo:payload}    
+
+            case "PROFILE_VISIBILITY":
+                return {...state,hideProfile:payload}
                 
             default:
                 return state;
@@ -27,7 +29,8 @@ export const CompleteCandidateProfileProvider = ({children}) =>
     const initialState = {
         details:{linkedin:"",bio:"",experience:"",skills:[],resume:"",portfolioLink:""},
         profilePhoto:"",
-        profileVideo:null
+        profileVideo:null,
+        hideProfile:false
     }
 
     const [state,dispatch] = useReducer( CandidateProfileReducer , initialState);
