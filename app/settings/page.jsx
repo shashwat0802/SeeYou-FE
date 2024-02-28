@@ -2,8 +2,15 @@
 
 import { IoIosArrowBack } from "react-icons/io";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Settings() {
+
+    const router = useRouter();
+    const toLinkedAccounts = () => {
+        router.push('/settings/linked-accounts');
+    };
+    
   return (
     <>
       <div className="px-4 py-3">
@@ -14,7 +21,7 @@ export default function Settings() {
 
         <div className="mx-3 mb-4 mt-8 flex flex-col gap-6">
             <p className="text-base font-bold">Account</p>
-            <div className="flex gap-3">
+            <div className="flex gap-3 cursor-pointer" onClick={toLinkedAccounts}>
                 <Image src={require('../../public/images/link.svg')}/>
                 <p className="text-[#F8F9FE]">Linked Accounts</p>
             </div>
@@ -24,23 +31,23 @@ export default function Settings() {
 
         <div className="mx-3 my-4 flex flex-col gap-6">
             <p className="text-base font-bold">General</p>
-            <div className="flex gap-3">
+            <div className="flex gap-3 cursor-pointer">
                 <Image src={require('../../public/images/Profile.svg')}/>
                 <p className="text-[#F8F9FE]">Account manager details</p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 cursor-pointer">
                 <Image src={require('../../public/images/notification.svg')}/>
                 <p className="text-[#F8F9FE]">Notifications</p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 cursor-pointer">
                 <Image src={require('../../public/images/mic.svg')}/>
                 <p className="text-[#F8F9FE]">Language (English (US))</p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 cursor-pointer">
                 <Image src={require('../../public/images/help.svg')}/>
                 <p className="text-[#F8F9FE]">Help Center / Contact Us</p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 cursor-pointer">
                 <Image src={require('../../public/images/add-invite.svg')}/>
                 <p className="text-[#F8F9FE]">Invite Friends</p>
             </div>
