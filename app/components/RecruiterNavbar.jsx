@@ -12,6 +12,7 @@ import { IoSettingsOutline } from 'react-icons/io5';
 import { IoIosLogOut } from 'react-icons/io';
 import { FaChevronDown } from 'react-icons/fa';
 import { PiBuildingsBold } from 'react-icons/pi';
+import Cookies from 'js-cookie';
 
 const RecruiterNavbar = () => {
   const handleLogout = () => {
