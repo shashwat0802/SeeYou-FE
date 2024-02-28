@@ -10,6 +10,14 @@ export default function Settings() {
     const toLinkedAccounts = () => {
         router.push('/settings/linked-accounts');
     };
+
+    const toNotifications = () => {
+        router.push('/settings/notification');
+    };
+
+    const toHelpCenter = () => {
+        router.push('/settings/help-center');
+    };
     
   return (
     <>
@@ -35,7 +43,7 @@ export default function Settings() {
                 <Image src={require('../../public/images/Profile.svg')}/>
                 <p className="text-[#F8F9FE]">Account manager details</p>
             </div>
-            <div className="flex gap-3 cursor-pointer">
+            <div className="flex gap-3 cursor-pointer" onClick={toNotifications}>
                 <Image src={require('../../public/images/notification.svg')}/>
                 <p className="text-[#F8F9FE]">Notifications</p>
             </div>
@@ -43,7 +51,7 @@ export default function Settings() {
                 <Image src={require('../../public/images/mic.svg')}/>
                 <p className="text-[#F8F9FE]">Language (English (US))</p>
             </div>
-            <div className="flex gap-3 cursor-pointer">
+            <div className="flex gap-3 cursor-pointer" onClick={toHelpCenter}>
                 <Image src={require('../../public/images/help.svg')}/>
                 <p className="text-[#F8F9FE]">Help Center / Contact Us</p>
             </div>
