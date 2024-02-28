@@ -10,16 +10,15 @@ import Video from "../components/postjob/video/Video";
 import Preview from "../components/postjob/preview/Preview";
 
 const page = () => {
-  const [step, setStep] = useState(1);
   const [questionNumber, setQuestionNumber] = useState(1)
 
   useEffect(()=>{window.scrollTo(0, 0)},[questionNumber])
 
   return (
-    <div className=" my-4 mx-6 space-y-4">
+    <div className=" mb-4 mx-6 space-y-4">
       <ProgressBar
-        step={step}
-        setStep={setStep}
+        step={questionNumber}
+        setStep={setQuestionNumber}
         totalSteps={5}
         type="Post a job"
       />

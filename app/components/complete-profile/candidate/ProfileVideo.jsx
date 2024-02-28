@@ -1,21 +1,22 @@
 import React from 'react'
-import Button from '../postjob/Button';
-import {useProfileData} from "../../complete-profile/recruiter/CompleteRecruiterProfileContext";
+import {useProfileData} from "../../../complete-profile/candidate/CompleteCandidateProfileContext";
+import Button from '../../postjob/Button';
 
-const CompanyVideo = ({setStep}) => {
-    const {state:{companyVideo} , dispatch} = useProfileData(); 
+const ProfileVideo = ({setStep}) => {
+    const {state:{profileVideo} , dispatch} = useProfileData(); 
+    console.log(profileVideo);
 
-    if(companyVideo)
+    if(profileVideo)
     return (
         <section className='space-y-6 mx-1'>
             <button className='underline'>Watch Demo & Tips</button>
             <video controls width="400" className='w-full rounded-3xl'>
-                <source src={URL.createObjectURL(companyVideo)} type={companyVideo.type} />
+                <source src={URL.createObjectURL(profileVideo)} type={profileVideo.type} />
                 Your browser does not support the video tag.
             </video>
             <button className='text-red-600 font-medium text-lg hover:underline mt-4'
              onClick={()=>dispatch({type:"VIDEO",payload:null})}>Clear Video</button>
-            <Button isDisabled={()=>false} clickHandler={()=>setStep(7)} />
+            <Button isDisabled={()=>false} clickHandler={()=>setStep(4)} />
         </section>
     )
 
@@ -29,11 +30,11 @@ const CompanyVideo = ({setStep}) => {
                     <path fillRule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clipRule="evenodd" />
                     </svg>
                 </aside>
-                <p className='text-center mt-3 mx-1'>Upload 1-3 min video with the Owner / Founder / CEO / HR Director</p>
+                <p className='text-center mt-3 mx-1 max-w-52'>Upload 1-3 min video talking about yourself</p>
             </label>
-            <Button isDisabled={()=>true} clickHandler={()=>setStep(7)} />
+            <Button isDisabled={()=>true} clickHandler={()=>setStep(4)} />
         </section>
   )
 }
 
-export default CompanyVideo
+export default ProfileVideo
