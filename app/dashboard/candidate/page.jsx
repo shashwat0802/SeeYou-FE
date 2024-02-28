@@ -17,13 +17,31 @@ const CandidateDashboard = () => {
       setAllJobs(response.data)
       setRecommendedJobs(response.data)
     }).catch((err) => {
-      console.log(err)
+      toast.error('unable to get jobs !')
     })
   } , [])
+
+  const searchJobs = () => {
+    let search = document.querySelector('#job-search').value
+    console.log(search)
+    customFetch('/search/jobs' , {
+      method: 'POST',
+      body: JSON.stringify({
+        searchText: search
+      })
+    }).then(res => {
+      setRecommendedJobs(res.data)
+    }).catch(err => {
+      toast.error('unable to get jobs !')
+    })
+  }
+
   return (
     <div className="flex flex-col items-center px-4">
       <div className="rounded-lg flex bg-[#34373F] p-3 items-center w-full justify-between text-lg my-4">
+        <button onClick={searchJobs}>
         <FaSearch />
+        </button>
         <input
           type="search"
           id="job-search"
