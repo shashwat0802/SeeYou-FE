@@ -10,9 +10,12 @@ import Image from 'next/image';
 import { customFetch } from '@/utils/fetchHelper';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const Job = ({ job }) => {
+    // check from api if the job is bookmarked or not
   const [isBookMarked, setIsBookMarked] = useState(false);
+  const router = useRouter();
   const bookMarkJob = (e) => {
     if (!isBookMarked) {
       customFetch(`/jobs/save/${job._id}`, {
@@ -40,7 +43,7 @@ const Job = ({ job }) => {
     }
   };
   return (
-    <div className="bg-[#1F222A] rounded-lg p-4">
+    <div className="bg-[#1F222A] rounded-lg p-4 cursor-pointer">
       <div className="flex pb-2  border-b border-[#35383F]">
         <div className="mr-3">
           <Image
@@ -66,9 +69,19 @@ const Job = ({ job }) => {
           </button>
         </div>
       </div>
-      <p className="text-lg mt-2">
-        $ <span>{job.SalaryMin}</span>- <span>{job.SalaryMax}</span> /month
-      </p>
+      <div className="flex justify-between items-center mt-2">
+        <p className="text-lg">
+          $ <span>{job.SalaryMin}</span>- <span>{job.SalaryMax}</span> /month
+        </p>
+        <button
+          className="bg-[#35383F] px-2 rounded-md py-1"
+          onClick={() => {
+            router.push(`/job-apply/${job._id}`);
+          }}
+        >
+          APPLY
+        </button>
+      </div>
       <ul className="my-2">
         <li className="text-sm flex items-center">
           <span className="text-lg mr-1">
@@ -110,4 +123,4 @@ const Job = ({ job }) => {
   );
 };
 
-export default Job
+export default Job;
