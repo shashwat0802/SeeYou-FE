@@ -1,6 +1,5 @@
 'use client';
 import Registration from '@/app/components/Registration';
-import { toast } from 'react-toastify';
 const CandidatePage = () => {
   return (
     <div>

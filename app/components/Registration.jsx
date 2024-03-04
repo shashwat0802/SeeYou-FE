@@ -14,6 +14,7 @@ import { FaChevronLeft } from 'react-icons/fa';
 import starPath from '@/public/images/star.svg';
 import { useRouter } from 'next/navigation';
 import goldUser from '@/public/images/gold-user.svg';
+import Cookies from 'js-cookie';
 
 const Registration = ({ type, role }) => {
   const [isOTP, setIsOTP] = useState(false);
@@ -35,7 +36,9 @@ const Registration = ({ type, role }) => {
         method: 'POST',
         body: JSON.stringify(formJson),
       });
-      console.log(response);
+      if(response.success !== true){
+          throw new Error('registration failed !')
+      }
       toast.success('Success !, Please Verify OTP');
       setIsOTP(true);
     } catch (error) {
@@ -54,12 +57,24 @@ const Registration = ({ type, role }) => {
           OTP: otp,
         }),
       });
-      console.log(response);
+      if (response) {
+        const { token } = response;
+        setCookie('jwt', token);
+        setCookie('role', role);
+      } else {
+        throw new Error('failed to signup');
+      }
       setIsSuccess(true);
     } catch (error) {
       console.log(error);
       toast.error(error);
     }
+  };
+
+  const setCookie = (name, data) => {
+    // If data is a string, don't stringify it
+    const value = typeof data === 'string' ? data : JSON.stringify(data);
+    Cookies.set(name, value, { expires: 1 });
   };
 
   return (
