@@ -89,7 +89,6 @@ const CandidateDashboard = () => {
             } else if (
               value.JobTitle.toLowerCase().includes(searchJob.toLowerCase())
             ) {
-              console.log(value);
               return value;
             }
           })
