@@ -50,11 +50,12 @@ const ProfileVisibility = () => {
             body: formData,
           }
         );
-        if (response) {
-          console.log(response);
-          toast.success('Success!');
-          // router.push('/dashboard/candidate');
+        if (!response.ok) {
+          throw new Error('')
         }
+        console.log(response);
+        toast.success('Success!');
+        // router.push('/dashboard/candidate');
       } catch (error) {
         toast.error('Failed to Complete Profile, please try again later');
       }
