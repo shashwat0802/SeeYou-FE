@@ -16,7 +16,7 @@ import { useRouter } from 'next/navigation';
 import goldUser from '@/public/images/gold-user.svg';
 import Cookies from 'js-cookie';
 
-const Registration = ({ type, role }) => {
+const Registration = ({ type}) => {
   const [isOTP, setIsOTP] = useState(false);
   const [otp, setOtp] = useState('');
   const [email, setEmail] = useState('');
@@ -60,7 +60,7 @@ const Registration = ({ type, role }) => {
       if (response) {
         const { token } = response;
         setCookie('jwt', token);
-        setCookie('role', role);
+        setCookie('role', type);
       } else {
         throw new Error('failed to signup');
       }

@@ -13,15 +13,11 @@ const ProfileVisibility = () => {
     const {state, dispatch} = useProfileData();
     const router = useRouter();
     const clickHandler = async () => {
-      console.log(state);
-
-      // Create a FormData object
       const formData = new FormData();
       formData.append('AboutMyself', state.details.bio);
       formData.append('AboutExperience', state.details.experience);
       formData.append('Skills', state.details.skills.toString());
 
-      // Assuming state.details.resume is a File object
       if (state.details.resume instanceof File) {
         formData.append('Resume', state.details.resume);
       }
@@ -29,7 +25,6 @@ const ProfileVisibility = () => {
       formData.append('Website', state.details.portfolioLink);
       formData.append('isHidden', state.hideProfile);
 
-      // Assuming state.profilePhoto and state.profileVideo are File objects
       if (state.profilePhoto instanceof File) {
         formData.append('Photo', state.profilePhoto);
       }
@@ -37,30 +32,18 @@ const ProfileVisibility = () => {
         formData.append('Video', state.profileVideo);
       }
 
-      try {
-        let token = Cookies.get('jwt');
-        token = token ? token.replace(/"/g, '') : null;
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/candidates/register`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-            method: 'POST',
-            body: formData,
-          }
-        );
-        if (!response.ok) {
-          throw new Error('')
-        }
-        console.log(response);
-        toast.success('Success!');
-        // router.push('/dashboard/candidate');
-      } catch (error) {
-        toast.error('Failed to Complete Profile, please try again later');
-      }
+      customFetch(`/candidates/register`, {
+        method: 'POST',
+        body: formData,
+      } , false)
+        .then((res) => {
+          toast.success('Success!');
+          router.push('/dashboard/candidate');
+        })
+        .catch((err) => {
+          toast.error('Failed to Complete Profile, please try again later');
+        });
     };
-    
 
   return (
     <div className='space-y-4'>
