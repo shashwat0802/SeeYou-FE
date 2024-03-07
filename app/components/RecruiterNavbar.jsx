@@ -31,7 +31,7 @@ const RecruiterNavbar = () => {
             data-dev-hint="mobile menu bar"
           >
             <Link
-              href="#"
+              href="/dashboard/recruiter"
               className={`block p-4 text-white font-bold whitespace-nowrap truncate`}
             >
               <Image src={textLogoPath} height={25} width={70} />
@@ -166,7 +166,7 @@ const RecruiterNavbar = () => {
 
                   <span>Account Manager</span>
                 </Link>
-                <Link
+                {/* <Link
                   href="#"
                   className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                 >
@@ -175,7 +175,7 @@ const RecruiterNavbar = () => {
                   </span>
 
                   <span>Settings</span>
-                </Link>
+                </Link> */}
                 <button
                   onClick={handleLogout}
                   className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-[#FF616D] text-[#FF616D] text-base"
@@ -232,7 +232,7 @@ const RecruiterNavbar = () => {
                   </span>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="#"
                   className="flex items-center space-x-4  py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
@@ -241,7 +241,7 @@ const RecruiterNavbar = () => {
                     <IoSettingsOutline />
                   </span>
                 </Link>
-              </li>
+              </li> */}
             </ul>
             <div className="grid grid-cols-5 p-2 bg-transparent w-48 border border-white-20 place-items-center rounded-[24px] ml-4">
               <Image
