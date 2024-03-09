@@ -226,7 +226,7 @@ const TermsAndCondition = () => {
     }
 
     customFetch(
-      `/company/register`,
+      `/companies/register`,
       {
         method: 'POST',
         body: formData,
