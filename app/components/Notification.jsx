@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import emptyLogo from '@/public/images/empty.svg';
 import { FaExclamationCircle } from 'react-icons/fa';
 import newLogo from '@/public/images/new-logo.svg';
+import placeholder from '@/public/images/placeholder-2.svg';
 
 const Notification = ({ role }) => {
   let [isActive, setIsActive] = useState(true);
@@ -85,7 +86,16 @@ const Notification = ({ role }) => {
           <div className="flex justify-end my-4">
             <button className="text-xs">Clear all</button>
           </div>
-          <div></div>
+          <div className="rounded-lg flex items-center bg-[#1f222a] p-4 border border-[#35383f] my-2">
+            <Image height={110} width={80} alt="#" src={placeholder} />
+            <div className="mx-4">
+              <p className="text-white text-lg">Product Management</p>
+              <p className="text-[#71727A] text-sm mb-2">GothaCapital</p>
+              <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-blue-200 text-blue-700 rounded-full">
+                Video Application sent
+              </div>
+            </div>
+          </div>
         </div>
       )}
       {content.length === 0 && (
