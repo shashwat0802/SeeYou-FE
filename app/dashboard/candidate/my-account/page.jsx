@@ -3,10 +3,16 @@
 import Image from "next/image";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import Skills from "../../../components/postjob/description/Skills";
+import { UploadPresentation } from "../../../components/complete-profile/recruiter/AboutCompany";
 
 export default function CandidateMyAccount() {
-  const [show, setShow] = useState(false);
   const [showContact, setShowContact] = useState(false);
+  const [showAboutMyself, setShowAboutMyself] = useState(false);
+  const [showMyExp, setShowMyExp] = useState(false);
+  const [showSkills, setShowSkills] = useState(false);
+  const [showResume, setShowResume] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
 
   return (
     <div className="min-h-[100vh] p-3">
@@ -80,14 +86,14 @@ export default function CandidateMyAccount() {
             <div>
               <div className="my-3">
                 <input
-                  className="h-[48px] p-2 w-full rounded-xl bg-inherit outline outline-[#C5C6CC]"
+                  className="h-[48px] p-2 w-full text-sm rounded-xl bg-inherit outline outline-[#C5C6CC]"
                   type="text"
                   placeholder="Email"
                 />
               </div>
               <div className="my-3">
                 <input
-                  className="h-[48px] p-2 w-full rounded-xl bg-inherit outline outline-[#C5C6CC]"
+                  className="h-[48px] p-2 w-full text-sm rounded-xl bg-inherit outline outline-[#C5C6CC]"
                   type="text"
                   placeholder="Number"
                 />
@@ -96,124 +102,190 @@ export default function CandidateMyAccount() {
           )}
         </div>
 
-        <div
-          onClick={() => setShow(!show)}
-          className="flex gap-3 items-center justify-between bg-[#1F222A] p-3 mt-3 outline outline-[#35383F] rounded-2xl cursor-pointer"
-        >
-          <div>
-            <div className="flex gap-2 items-center">
-              <Image src={require("../../../../public/images/about-me.svg")} />
-              <div>
-                <p>About Myself</p>
-                <p className="text-[#71727A] text-xs">
-                  (Maximum 160 characters)
-                </p>
+        <div>
+          <div
+            onClick={() => setShowAboutMyself(!showAboutMyself)}
+            className="flex gap-3 items-center justify-between bg-[#1F222A] p-3 mt-3 outline outline-[#35383F] rounded-2xl cursor-pointer"
+          >
+            <div>
+              <div className="flex gap-2 items-center">
+                <Image
+                  src={require("../../../../public/images/about-me.svg")}
+                />
+                <div>
+                  <p>About Myself</p>
+                  <p className="text-[#71727A] text-xs">
+                    (Maximum 160 characters)
+                  </p>
+                </div>
               </div>
             </div>
-            {show && (
-              <p className="text-xs text-[#71727A] mt-1">{"data?.ans"}</p>
+            {showAboutMyself ? (
+              <FaChevronUp className="text-gray-500" />
+            ) : (
+              <FaChevronDown className="text-gray-500" />
             )}
           </div>
-          {show ? (
-            <FaChevronUp className="text-gray-500" />
-          ) : (
-            <FaChevronDown className="text-gray-500" />
+          {showAboutMyself && (
+            <div>
+              <div className="my-3">
+                <input
+                  className="h-[48px] p-2 w-full text-sm rounded-xl bg-inherit outline outline-[#C5C6CC]"
+                  type="text"
+                  placeholder="About Myself"
+                />
+              </div>
+            </div>
           )}
         </div>
 
-        <div
-          onClick={() => setShow(!show)}
-          className="flex gap-3 items-center justify-between bg-[#1F222A] p-3 mt-3 outline outline-[#35383F] rounded-2xl cursor-pointer"
-        >
-          <div>
-            <div className="flex gap-2 items-center">
-              <Image src={require("../../../../public/images/about-me.svg")} />
-              <div>
-                <p>My Experience</p>
-                <p className="text-[#71727A] text-xs">
-                  (Maximum 10,000 characters)
-                </p>
+        <div>
+          <div
+            onClick={() => setShowMyExp(!showMyExp)}
+            className="flex gap-3 items-center justify-between bg-[#1F222A] p-3 mt-3 outline outline-[#35383F] rounded-2xl cursor-pointer"
+          >
+            <div>
+              <div className="flex gap-2 items-center">
+                <Image src={require("../../../../public/images/my-exp.svg")} />
+                <div>
+                  <p>My Experiences</p>
+                  <p className="text-[#71727A] text-xs">
+                    (Maximum 10,000 characters)
+                  </p>
+                </div>
               </div>
             </div>
-            {show && (
-              <p className="text-xs text-[#71727A] mt-1">{"data?.ans"}</p>
+            {showMyExp ? (
+              <FaChevronUp className="text-gray-500" />
+            ) : (
+              <FaChevronDown className="text-gray-500" />
             )}
           </div>
-          {show ? (
-            <FaChevronUp className="text-gray-500" />
-          ) : (
-            <FaChevronDown className="text-gray-500" />
+          {showMyExp && (
+            <div>
+              <div className="my-3">
+                <input
+                  className="h-[48px] p-2 w-full text-sm rounded-xl bg-inherit outline outline-[#C5C6CC]"
+                  type="text"
+                  placeholder="My Experiences"
+                />
+              </div>
+            </div>
           )}
         </div>
 
-        <div
-          onClick={() => setShow(!show)}
-          className="flex gap-3 items-center justify-between bg-[#1F222A] p-3 mt-3 outline outline-[#35383F] rounded-2xl cursor-pointer"
-        >
-          <div>
-            <div className="flex gap-2 items-center">
-              <Image src={require("../../../../public/images/about-me.svg")} />
-              <div>
-                <p>My Skills</p>
-                <p className="text-[#71727A] text-xs">
-                  (Maximum 1000 characters)
-                </p>
+        <div>
+          <div
+            onClick={() => setShowSkills(!showSkills)}
+            className="flex gap-3 items-center justify-between bg-[#1F222A] p-3 mt-3 outline outline-[#35383F] rounded-2xl cursor-pointer"
+          >
+            <div>
+              <div className="flex gap-2 items-center">
+                <Image
+                  src={require("../../../../public/images/my-skills.svg")}
+                />
+                <div>
+                  <p>My Skills</p>
+                  <p className="text-[#71727A] text-xs">
+                    (Maximum 1000 characters)
+                  </p>
+                </div>
               </div>
             </div>
-            {show && (
-              <p className="text-xs text-[#71727A] mt-1">{"data?.ans"}</p>
+            {showSkills ? (
+              <FaChevronUp className="text-gray-500" />
+            ) : (
+              <FaChevronDown className="text-gray-500" />
             )}
           </div>
-          {show ? (
-            <FaChevronUp className="text-gray-500" />
-          ) : (
-            <FaChevronDown className="text-gray-500" />
+          {showSkills && (
+            <div className="pt-3">
+              <Skills />
+            </div>
           )}
         </div>
 
-        <div
-          onClick={() => setShow(!show)}
-          className="flex gap-3 items-center justify-between bg-[#1F222A] p-3 mt-3 outline outline-[#35383F] rounded-2xl cursor-pointer"
-        >
-          <div>
-            <div className="flex gap-2 items-center">
-              <Image src={require("../../../../public/images/about-me.svg")} />
-              <div>
-                <p>Uploaded CV/Resume</p>
-                <p className="text-[#71727A] text-xs">Maximum 10MB size</p>
+        <div>
+          <div
+            onClick={() => setShowResume(!showResume)}
+            className="flex gap-3 items-center justify-between bg-[#1F222A] p-3 mt-3 outline outline-[#35383F] rounded-2xl cursor-pointer"
+          >
+            <div>
+              <div className="flex gap-2 items-center">
+                <Image
+                  src={require("../../../../public/images/upload-resume.svg")}
+                />
+                <div>
+                  <p>Uploaded CV/Resume</p>
+                  <p className="text-[#71727A] text-xs">Maximum 10MB size</p>
+                </div>
               </div>
             </div>
-            {show && (
-              <p className="text-xs text-[#71727A] mt-1">{"data?.ans"}</p>
+            {showResume ? (
+              <FaChevronUp className="text-gray-500" />
+            ) : (
+              <FaChevronDown className="text-gray-500" />
             )}
           </div>
-          {show ? (
-            <FaChevronUp className="text-gray-500" />
-          ) : (
-            <FaChevronDown className="text-gray-500" />
+          {showResume && (
+            <div>
+              <div className="my-3">
+                <UploadPresentation />
+              </div>
+            </div>
           )}
         </div>
 
-        <div
-          onClick={() => setShow(!show)}
-          className="flex gap-3 items-center justify-between bg-[#1F222A] p-3 mt-3 outline outline-[#35383F] rounded-2xl cursor-pointer"
-        >
-          <div>
-            <div className="flex gap-2 items-center">
-              <Image src={require("../../../../public/images/about-me.svg")} />
-              <div>
-                <p>Uploaded Video</p>
-                <p className="text-[#71727A] text-xs">1-3 minutes</p>
+        <div>
+          <div
+            onClick={() => setShowVideo(!showVideo)}
+            className="flex gap-3 items-center justify-between bg-[#1F222A] p-3 mt-3 outline outline-[#35383F] rounded-2xl cursor-pointer"
+          >
+            <div>
+              <div className="flex gap-2 items-center">
+                <Image src={require("../../../../public/images/my-exp.svg")} />
+                <div>
+                  <p>Uploaded Profile Video</p>
+                  <p className="text-[#71727A] text-xs">1-3 minutes</p>
+                </div>
               </div>
             </div>
-            {show && (
-              <p className="text-xs text-[#71727A] mt-1">{"data?.ans"}</p>
+            {showVideo ? (
+              <FaChevronUp className="text-gray-500" />
+            ) : (
+              <FaChevronDown className="text-gray-500" />
             )}
           </div>
-          {show ? (
-            <FaChevronUp className="text-gray-500" />
-          ) : (
-            <FaChevronDown className="text-gray-500" />
+          {showVideo && (
+            <div>
+              <div className="my-3">
+                <div>
+                  <div className="flex gap-3 items-center my-2">
+                    <Image
+                      src={require("../../../../public/images/Play.svg")}
+                    />
+                    <p className="text-lg font-[900]">Uploaded Company Video</p>
+                  </div>
+                  <div className="my-4">
+                    <p className="underline">See Demo & Tips</p>
+                    <div>{/* missing */}</div>
+                    <p className="text-sm text-[#C5C6CC] text-center">OR</p>
+                    <div className="bg-[#1F222A] h-[80px] my-3 rounded-2xl outline outline-[#35383F] flex gap-3 items-center justify-between px-3">
+                      <div>
+                        <p className="text-lg">Shoot using Camera</p>
+                        <p className="text-[#C5C6CC]">
+                          Capture realtime video of your video
+                        </p>
+                      </div>
+                      <Image
+                        className="w-4 h-4"
+                        src={require("../../../../public/images/Camera.svg")}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           )}
         </div>
 
