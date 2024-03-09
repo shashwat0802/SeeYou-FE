@@ -49,7 +49,7 @@ const SavedJobs = () => {
       {/* recent jobs */}
       <ul className="flex justify-between w-full items-center my-4">
         <li className="text-lg font-black">
-          <span>20</span> Saved Jobs
+          <span>{savedJobs.length}</span> Saved Jobs
         </li>
         {/* <li>
           <button className="text-xl">
@@ -62,14 +62,27 @@ const SavedJobs = () => {
         <div key={index} className="bg-[#1F222A] rounded-lg p-4 mt-2">
           <div className="flex pb-2  border-b border-[#35383F] items-center">
             <div className="mr-3">
-              <Image width={90} height={90} src={placeholder} />
+              <Image
+                alt="#"
+                width={90}
+                height={90}
+                src={
+                  data?.CompanyID?.Logo.URL ? data?.CompanyID?.Logo.URL : placeholder
+                }
+              />
             </div>
             <div>
               <div className="blue-bg p-2 my-2">
-                <p className="text-xs font-boldrounded-md">{data?.jobDetails?.createdAtHumanReadable}</p>
+                <p className="text-xs font-boldrounded-md">
+                  {data?.jobDetails?.createdAtHumanReadable}
+                </p>
               </div>
-              <p className="text-[#D4D6DD] mt-1">{data?.jobDetails?.companyName}</p>
-              <p className="text-2xl font-black mt-2">{data?.jobDetails?.JobTitle}</p>
+              <p className="text-[#D4D6DD] mt-1">
+                {data?.jobDetails?.companyName}
+              </p>
+              <p className="text-2xl font-black mt-2">
+                {data?.jobDetails?.JobTitle}
+              </p>
             </div>
             <button className="self-start text-lg font-black cursor-pointer text-[#ffc02d] mt-4 ml-4">
               <BsBookmarkDashFill />
@@ -96,7 +109,7 @@ const SavedJobs = () => {
             </li>
             <li className="text-sm flex items-center mr-6 ">
               <span className="text-lg mr-1">
-                {" "}
+                {' '}
                 <LuArrowUpDown />
               </span>
               <span>{data?.jobDetails?.Location}</span> &nbsp;&nbsp;.

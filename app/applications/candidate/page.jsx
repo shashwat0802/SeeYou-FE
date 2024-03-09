@@ -3,8 +3,25 @@ import Image from 'next/image';
 import { FaSearch } from 'react-icons/fa';
 import { LuFilter } from 'react-icons/lu';
 import placeholder from '@/public/images/placeholder-2.svg';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { customFetch } from '@/utils/fetchHelper';
 
 const CandidateMyApplication = () => {
+  const [applications, setApplications] = useState();
+
+  useEffect(() => {
+    customFetch('/applications', {
+      method: 'GET',
+    })
+      .then((res) => {
+        setApplications(res.data);
+      })
+      .catch((err) => {
+        toast.error('Unable to get your application');
+      });
+  }, []);
+
   const searchApplication = () => {};
   return (
     <div className="px-4">
@@ -24,21 +41,30 @@ const CandidateMyApplication = () => {
         </button>
       </div>
       {/* main section */}
-      <p className="text-lg font-black my-3">Recommended Jobs</p>
-      <div className="rounded-lg flex items-center bg-[#1f222a] p-4 border border-[#35383f] my-2">
-        <Image height={110} width={80} alt="#" src={placeholder} />
-        <div className="mx-4">
-          <p className="text-white text-lg">Product Management</p>
-          <p className="text-[#71727A] text-sm mb-2">GothaCapital</p>
-          <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-blue-200 text-blue-700 rounded-full">
-            Video Application sent
-          </div>
+      <p className="text-lg font-black my-3">My Application</p>
+      {applications && (
+        <>
+          {applications.map((app, index) => (
+            <div
+              className="rounded-lg flex items-center bg-[#1f222a] p-4 border border-[#35383f] my-2"
+              key={index}
+            >
+              <Image height={110} width={80} alt="#" src={placeholder} />
+              <div className="mx-4">
+                <p className="text-white text-lg">Product Management</p>
+                <p className="text-[#71727A] text-sm mb-2">GothaCapital</p>
+                <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-blue-200 text-blue-700 rounded-full">
+                  Video Application sent
+                </div>
 
-          {/* <div class="ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-200 text-green-700 rounded-full">
-            Tag
-          </div> */}
-        </div>
-      </div>
+                {/* <div class="ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-200 text-green-700 rounded-full">
+               Tag
+             </div> */}
+              </div>
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 };

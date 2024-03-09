@@ -127,7 +127,7 @@ const Navbar = () => {
                     <span>Saved Jobs</span>
                   </Link>
                   <Link
-                    href="#"
+                    href="/dashboard/candidate/my-account"
                     className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                   >
                     <span className="text-xl">
