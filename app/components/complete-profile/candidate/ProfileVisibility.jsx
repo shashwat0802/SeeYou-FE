@@ -7,7 +7,6 @@ import hiddenImage from '@/public/images/profile-hidden.svg'
 import { customFetch } from '@/utils/fetchHelper';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
-import Cookies from 'js-cookie';
 
 const ProfileVisibility = () => {
     const {state, dispatch} = useProfileData();
