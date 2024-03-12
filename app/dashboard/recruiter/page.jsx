@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import { useRouter } from 'next/navigation';
 
 // This Dashboard needs to be visited later to integrate correctly with backend apis
 
@@ -215,6 +216,7 @@ const PostedJobList = () => {
 };
 
 const RecruiterDashboard = () => {
+  const router = useRouter()
   return (
     <div className="mx-6 pt-4 space-y-6 pb-10">
       {/* <Navbar /> */}
@@ -223,7 +225,9 @@ const RecruiterDashboard = () => {
           <h1 className=" text-xs">Welcome</h1>
           <h1 className=" text-lg">Dave Dus</h1>
         </aside>
-        <button className="px-4 py-3 border-2 border-white-medium text-sm font-semibold text-white-medium rounded-xl">
+        <button className="px-4 py-3 border-2 border-white-medium text-sm font-semibold text-white-medium rounded-xl" onClick={() => {
+          router.push('/post-job')
+        }}>
           + Post a Job
         </button>
       </header>

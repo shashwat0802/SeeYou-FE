@@ -1,7 +1,9 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { FaChevronLeft } from 'react-icons/fa';
 
 const ProgressBar = ({ step, setStep, totalSteps, type }) => {
+  const router = useRouter()
   const progressBarWidth = `${(step / totalSteps) * 100}%`;
 
   return (
@@ -14,6 +16,7 @@ const ProgressBar = ({ step, setStep, totalSteps, type }) => {
           onClick={(e) => {
             e.preventDefault();
             if (step > 1) setStep(step - 1);
+            if(step === 1) router.back()
           }}
         >
           <FaChevronLeft />
