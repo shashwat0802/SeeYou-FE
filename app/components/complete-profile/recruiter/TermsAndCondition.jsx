@@ -203,6 +203,7 @@ const TermsAndCondition = () => {
   const router = useRouter();
 
   const clickHandler = async () => {
+    console.log(state)
     const formData = new FormData();
     formData.append('CompanyName', state.companyInfo.companyName);
     formData.append('RegNumber', state.companyInfo.registrationNumber);
@@ -215,12 +216,12 @@ const TermsAndCondition = () => {
     formData.append('Website', state.aboutCompany.websiteurl);
     formData.append('Description', state.aboutCompany.about);
 
-    if (state.Logo instanceof File) {
-      formData.append('Logo', state.Logo);
+    if (state.logo instanceof File) {
+      formData.append('Photo', state.logo);
     }
-    if (state.companyBrands instanceof File) {
-      formData.append('Brands', state.companyBrands);
-    }
+    state.companyBrands.forEach((file) => {
+      formData.append('Brands', file);
+    });
     if (state.companyVideo instanceof File) {
       formData.append('Video', state.companyVideo);
     }
