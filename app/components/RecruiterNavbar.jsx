@@ -126,7 +126,7 @@ const RecruiterNavbar = () => {
 
                   <span>Saved Applications</span>
                 </Link>
-                <Link
+                {/* <Link
                   href="#"
                   className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                 >
@@ -135,9 +135,9 @@ const RecruiterNavbar = () => {
                   </span>
 
                   <span>Plans & Pricing</span>
-                </Link>
+                </Link> */}
                 <Link
-                  href="/notification"
+                  href="/notification/recruiter"
                   className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                 >
                   <span className="text-xl">
@@ -147,17 +147,17 @@ const RecruiterNavbar = () => {
                   <span>Notifications</span>
                 </Link>
                 <Link
-                  href="#"
+                  href="/company-details"
                   className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                 >
                   <span className="text-xl">
                     <PiBuildingsBold />
                   </span>
 
-                  <span>Company Page</span>
+                  <span>Company Details</span>
                 </Link>
                 <Link
-                  href="#"
+                  href="/account-manager"
                   className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                 >
                   <span className="text-xl">
@@ -224,7 +224,7 @@ const RecruiterNavbar = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/notification/recruiter"
                   className="flex items-center space-x-4  py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                 >
                   <span className="text-2xl">

@@ -144,7 +144,7 @@ const Registration = ({ type}) => {
               Sign Up
             </button>
           </form>
-          <SocialLogins />
+          {/* <SocialLogins /> */}
           <div className="text-center mt-4">
             <span className="text-[#71727A] font-bold text-xs">
               Already have an account?{' '}

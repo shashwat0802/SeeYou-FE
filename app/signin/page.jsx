@@ -91,7 +91,7 @@ const SignIn = () => {
               </span>
             </div>
           </form>
-          <SocialLogins />
+          {/* <SocialLogins /> */}
         </div>
       </div>
     </div>
