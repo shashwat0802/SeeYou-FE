@@ -1,22 +1,24 @@
-'use client';
-import Image from 'next/image';
-import React, { useState } from 'react';
-import emptyLogo from '@/public/images/empty.svg';
-import { FaExclamationCircle } from 'react-icons/fa';
-import newLogo from '@/public/images/new-logo.svg';
-import placeholder from '@/public/images/placeholder-2.svg';
+"use client";
+import Image from "next/image";
+import React, { useState } from "react";
+import emptyLogo from "@/public/images/empty.svg";
+import { FaChevronRight, FaExclamationCircle } from "react-icons/fa";
+import newLogo from "@/public/images/new-logo.svg";
+import placeholder from "@/public/images/placeholder-2.svg";
+import { BsBookmarkDash } from "react-icons/bs";
 
 const Notification = ({ role }) => {
   let [isActive, setIsActive] = useState(true);
   let [content, setContent] = useState([{}]);
+
   return (
     <div className="p-4">
       <div className="bg-[#1F222A] rounded-lg flex items-center">
         <div
           className={`flex items-center justify-center text-center w-1/2 p-2 rounded-lg ${
             isActive
-              ? 'text-white bg-[#34373F]'
-              : 'bg-transparent text-[#71727A]'
+              ? "text-white bg-[#34373F]"
+              : "bg-transparent text-[#71727A]"
           }`}
           onClick={() => {
             setIsActive(true);
@@ -27,8 +29,8 @@ const Notification = ({ role }) => {
         <div
           className={`flex items-center justify-center text-center w-1/2 p-2 rounded-lg ${
             !isActive
-              ? 'text-white bg-[#34373F]'
-              : 'bg-transparent text-[#71727A]'
+              ? "text-white bg-[#34373F]"
+              : "bg-transparent text-[#71727A]"
           }`}
           onClick={() => {
             setIsActive(false);
@@ -82,6 +84,7 @@ const Notification = ({ role }) => {
         </div>
       )}
       {!isActive && content.length !== 0 && (
+        <>
         <div>
           <div className="flex justify-end my-4">
             <button className="text-xs">Clear all</button>
@@ -97,7 +100,45 @@ const Notification = ({ role }) => {
             </div>
           </div>
         </div>
+        
+        {/* notification application card */}
+        <div className="p-3 rounded-lg bg-[#1F222A]">
+        <div className="flex gap-2">
+          <Image
+            src={require("../../public/images/woman.svg")}
+            className="rounded-md w-[100px] h-[100px]"
+          />
+          <div className="flex w-full justify-between">
+            <div>
+              <div className="flex gap-2 text-xs p-1 bg-gray-800 rounded-md">
+                <div className="flex text-[#2897FF]">
+                  <p>Unread</p>
+                </div>
+              </div>
+              <p className="text-[#D4D6DD] mt-2">John Brunos</p>
+              <p className="font-extrabold text-xl mt-1">UI/UX Designer</p>
+            </div>
+            <div>
+              <BsBookmarkDash
+                size={22}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-between font-light mt-2 text-sm">
+          <p>Received: 15 min ago</p>
+          <p className="flex items-center gap-1 text-[#2897FF] underline">
+            View Profile{" "}
+            <span>
+              <FaChevronRight />
+            </span>
+          </p>
+        </div>
+      </div>
+        </>
       )}
+ 
+
       {content.length === 0 && (
         <div className="my-12">
           <Image width={350} height={250} src={emptyLogo} />
