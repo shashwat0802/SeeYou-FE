@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import Skills from "../../../components/postjob/description/Skills";
 import { UploadPresentation } from "../../../components/complete-profile/recruiter/AboutCompany";
+import { customFetch } from "@/utils/fetchHelper";
+import { toast } from "react-toastify";
 
 export default function CandidateMyAccount() {
   const [showContact, setShowContact] = useState(false);
@@ -13,6 +15,23 @@ export default function CandidateMyAccount() {
   const [showSkills, setShowSkills] = useState(false);
   const [showResume, setShowResume] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
+
+  const [apiData, setApiData] = useState("");
+
+  useEffect(() => {
+    customFetch("/companies", {
+      method: "GET",
+    })
+      .then((response) => {
+        setApiData(response);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Unable to get the data");
+      });
+  }, []);
+
+  console.log(apiData);
 
   return (
     <div className="min-h-[100vh] p-3">
