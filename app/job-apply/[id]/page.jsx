@@ -9,17 +9,46 @@ import { LuArrowUpDown } from 'react-icons/lu';
 import { GoClock } from 'react-icons/go';
 import { useRouter } from 'next/navigation';
 import { FaChevronLeft } from 'react-icons/fa';
-import { MdIosShare } from 'react-icons/md';
 import { FiUsers } from 'react-icons/fi';
 import TabPane from 'antd/es/tabs/TabPane';
 import { Tabs } from 'antd';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { customFetch } from '@/utils/fetchHelper';
+import ReactPlayer from 'react-player'
 
 const ApplyJobPage = ({ params }) => {
   const router = useRouter();
   const [job, setJob] = useState();
+  const [isBookMarked, setIsBookMarked] = useState(false);
+
+  const bookMarkJob = (e) => {
+    if (!isBookMarked) {
+      customFetch(`/jobs/save/${job._id}`, {
+        method: 'POST',
+      })
+        .then((res) => {
+          setIsBookMarked(!isBookMarked);
+          toast.success('Job Bookmarked !');
+          return;
+        })
+        .catch((err) => {
+          toast.error('Unable to Bookmark Job');
+        });
+    } else {
+      customFetch(`/jobs/unsave/${job._id}`, {
+        method: 'DELETE',
+      })
+        .then((res) => {
+          setIsBookMarked(!isBookMarked);
+          toast.success('Bookmark Removed !');
+        })
+        .catch((err) => {
+          toast.error('Unable to Remove Bookmark ');
+        });
+    }
+  };
+
   useEffect(() => {
     customFetch(`/jobs/${params.id}`, {
       method: 'GET',
@@ -44,14 +73,14 @@ const ApplyJobPage = ({ params }) => {
               >
                 <FaChevronLeft />
               </button>
-              <div className="flex items-center">
+              {/* <div className="flex items-center">
                 <button className="mr-3 text-2xl">
                   <MdIosShare />
                 </button>
                 <button>
                   <BsBookmarkDash />
                 </button>
-              </div>
+              </div> */}
             </div>
             <div className="bg-[#1F222A] rounded-lg p-4">
               <div className="border-b border-[#35383F] pb-2">
@@ -132,13 +161,15 @@ const ApplyJobPage = ({ params }) => {
           </div>
           <div className="w-full bg-white-9 p-4">
             <div className="grid grid-cols-5 gap-4">
-              <button className="col-span-3 rounded-lg bg-white text-black font-bold">
+              <button className="col-span-3 rounded-lg bg-white text-black font-bold" onClick={() => {
+                router.push(`/job-apply/${job._id}/submission`);
+              }}>
                 Apply
               </button>
-              <button className="bg-[#35383F] flex items-center justify-center col-span-1 rounded-lg text-xl p-2">
+              {/* <button className="bg-[#35383F] flex items-center justify-center col-span-1 rounded-lg text-xl p-2">
                 <MdIosShare />
-              </button>
-              <button className="bg-[#35383F] flex items-center justify-center col-span-1 rounded-lg text-xl p-2">
+              </button> */}
+              <button className={`bg-[#35383F] flex items-center justify-center col-span-1 rounded-lg text-xl p-2 ${isBookMarked ? 'text-yellow-300' : ''}`}   onClick={bookMarkJob} >
                 <BsBookmarkDash />
               </button>
             </div>
@@ -163,73 +194,15 @@ const ApplyJobPage = ({ params }) => {
                     (item, index) => item.trim() && <li key={index}>{item}</li>
                   )}
                 </ul>
-                <ul className="list-disc text-white">
-                  <span className="text-lg font-bold ">Job Description</span>
-                  <li>
-                    A Senior Manager in Engineering Change Management is a
-                    crucial role within an organization, particularly in
-                    industries such as manufacturing, aerospace, automotive, and
-                    technology, where product design and development are
-                    essential components of the business
-                  </li>
-                  <li>
-                    Here's an overview of the responsibilities, qualifications,
-                    and key aspects of this role:
-                  </li>
-                  <span className="text-lg font-bold">Role Overview:</span>
-                  <li>
-                    Change Control Leadership: Senior Managers in Engineering
-                    Change Management are responsible for leading and overseeing
-                    the process of making changes to products, designs, and
-                    engineering processes
-                  </li>
-                  <li>
-                    This includes managing cross-functional teams, setting
-                    priorities, and ensuring that changes are implemented
-                    smoothly and{' '}
-                    <span className="font-bold cursor-pointer">
-                      {' '}
-                      ...READ MORE
-                    </span>
-                  </li>
-                </ul>
+                <p className="text-lg font-bold text-white">Job Description Video</p>
+                {job.JobVideo.URL && <ReactPlayer url={job.JobVideo.URL} controls={true} height={150} width={300} /> }
               </TabPane>
               <TabPane key={2} tab="Job Skills">
                 <ul className="list-disc text-white">
-                  <span className="text-lg font-bold">Job Description</span>
+                  <span className="text-lg font-bold">Job Skills</span>
                   {job.SkillDescription.split('\n').map(
                     (item, index) => item.trim() && <li key={index}>{item}</li>
                   )}
-                </ul>
-                <ul className="list-disc text-white">
-                  <span className="text-lg font-bold ">Job Description</span>
-                  <li>
-                    A Senior Manager in Engineering Change Management is a
-                    crucial role within an organization, particularly in
-                    industries such as manufacturing, aerospace, automotive, and
-                    technology, where product design and development are
-                    essential components of the business
-                  </li>
-                  <li>
-                    Here's an overview of the responsibilities, qualifications,
-                    and key aspects of this role:
-                  </li>
-                  <span className="text-lg font-bold">Role Overview:</span>
-                  <li>
-                    Change Control Leadership: Senior Managers in Engineering
-                    Change Management are responsible for leading and overseeing
-                    the process of making changes to products, designs, and
-                    engineering processes
-                  </li>
-                  <li>
-                    This includes managing cross-functional teams, setting
-                    priorities, and ensuring that changes are implemented
-                    smoothly and{' '}
-                    <span className="font-bold cursor-pointer">
-                      {' '}
-                      ...READ MORE
-                    </span>
-                  </li>
                 </ul>
               </TabPane>
             </Tabs>
