@@ -1,4 +1,5 @@
 import React , {useState} from 'react'
+import { useData } from '../../search-candidate/SearchCandidateContext';
 
 const Filters = () => {
     const [selectedFilter, setSelectedFilter] = useState('Alphabetical (A to Z)');
@@ -46,18 +47,19 @@ const Filters = () => {
   };
 
 const SearchResults = ({candidateData}) => {
+    const {dispatch} = useData();
   return (
     <div>
-        <headers className="flex justify-between items-center py-6 px-4">
+        <header className="flex justify-between items-center py-6 px-4">
             <p className=' text-sm font-extrabold'>3,7444 Found</p>
             <Filters />
-        </headers>
+        </header>
         <ul className=' space-y-3 max-h-[80vh] overflow-y-scroll'>
             {candidateData.map(candidate=>(
                 <li className='p-3 rounded-xl bg-bg-light space-y-3' key={candidate.id}>
-                    <section className=' grid grid-cols-[auto,1fr,auto] gap-x-2 items-start'>
-                        <img src={candidate.pfpLink} alt="Candidate" className=' object-cover w-20 h-20 rounded' />
-                        <aside className='space-y-1'>
+                    <section className=' grid grid-cols-[auto,1fr,auto] gap-x-2 items-start ' >
+                        <img src={candidate.pfpLink} alt="Candidate" className=' object-cover w-20 h-20 rounded' onClick={()=>dispatch({type:"SELECT_CANDIDATE_PROFILE",payload:candidate})} />
+                        <aside className='space-y-1 hover:cursor-pointer' onClick={()=>dispatch({type:"SELECT_CANDIDATE_PROFILE",payload:candidate})}>
                             <p className=' text-xs text-[#EAF2FF] font-medium bg-[#7D5AE21A] py-0.5 rounded-sm px-1.5 w-fit'>{candidate.keywordSimilarity}% Keywrods Similarity</p>
                             <h2 className='text-[#D4D6DD]'>{candidate.name}</h2>
                             <h1 className=' text-lg text-white font-black'>{candidate.jobRole}</h1>

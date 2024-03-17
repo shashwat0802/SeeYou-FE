@@ -20,6 +20,12 @@ export const SearchCandidateProvider = ({children}) =>
             case "RESET_ADVANCED_FILTERS":
                 return {...state,advancedFilter:{cvKeywords:"",noneKeywords:"",profileLastUpdated:""}}
 
+            case "SELECT_CANDIDATE_PROFILE":
+                return {...state,showProfile:true,candidate:payload}   
+                
+            case "BACK_TO_SEARCH_RESULTS":
+                return {...state,showProfile:false}    
+
             default:
                 return state;
         }
@@ -27,7 +33,9 @@ export const SearchCandidateProvider = ({children}) =>
 
     const initialState = {
         showModal:false,
-        advancedFilter:{cvKeywords:"",noneKeywords:"",profileLastUpdated:""}
+        advancedFilter:{cvKeywords:"",noneKeywords:"",profileLastUpdated:""},
+        showProfile:false,
+        candidate:{}
     }
 
     const [state,dispatch] = useReducer( SearchCandidateReducer , initialState);

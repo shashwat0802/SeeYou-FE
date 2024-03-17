@@ -3,6 +3,7 @@ import React from 'react'
 import SearcBar from "../components/search-candidate/SearchBar";
 import AdvancedFilters from "../components/search-candidate/AdvancedFilters";
 import SearchResults from "../components/search-candidate/SearchResults";
+import CandidateProfile from "../components/search-candidate/CandidateProfile";
 
 import { SearchCandidateProvider } from "./SearchCandidateContext";
 import { useData } from './SearchCandidateContext';
@@ -27,13 +28,15 @@ pfpLink:"https://www.shutterstock.com/shutterstock/photos/1714666150/display_150
 ]
 
 const page = () => {
-  const {state:{showModal}} = useData();
+  const {state:{showModal,showProfile}} = useData();
   return (
     <>
     {showModal && <AdvancedFilters />}
     <div className='pt-4 px-4 h-screen'>
         <SearcBar />
-        <SearchResults candidateData={candidateData} />
+        {showProfile
+        ?<CandidateProfile />
+        :<SearchResults candidateData={candidateData} />}
     </div>
     </>
   )
