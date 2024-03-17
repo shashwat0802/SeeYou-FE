@@ -13,8 +13,8 @@ const AdvancedFilters = () => {
     }
 
   return (
-    <div className='fixed z-10 w-full h-full  bg-primary px-5'>
-        <header className=' space-x-4 flex items-center py-6 '>
+    <div className='fixed z-10 w-full h-full overflow-y-scroll  bg-primary px-5 py-6'>
+        <header className=' space-x-4 flex items-center pb-6 '>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6" onClick={()=>dispatch({type:"TOGGLE_MODAL",payload:false})}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
@@ -44,9 +44,9 @@ const AdvancedFilters = () => {
                     }
             </ul>
             <section className='grid grid-cols-2 gap-x-2 w-full' >
-            <button className='border border-white rounded-xl text-white py-3 px-4 font-semibold ' onClick={()=>dispatch({type:"RESET_ADVANCED_FILTERS",payload:""})}>Reset</button>
-            <button className='border border-transparent rounded-xl bg-white text-black py-3 px-4 font-semibold ' onClick={findCandidates}>Find Candidates</button>
-        </section>
+                <button className='border border-white rounded-xl text-white py-3 px-4 font-semibold ' onClick={()=>dispatch({type:"RESET_ADVANCED_FILTERS",payload:""})}>Reset</button>
+                <button className='border border-transparent rounded-xl bg-white text-black py-3 px-4 font-semibold ' onClick={findCandidates}>Find Candidates</button>
+            </section>
         </main> 
         
     </div>
