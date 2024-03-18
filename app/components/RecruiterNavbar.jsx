@@ -107,7 +107,7 @@ const RecruiterNavbar = () => {
                   <span>Applications</span>
                 </Link>
                 <Link
-                  href="#"
+                  href="/search-candidate"
                   className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                 >
                   <span className="text-xl">

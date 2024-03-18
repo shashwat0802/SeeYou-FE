@@ -6,9 +6,29 @@ import { toast } from 'react-toastify';
 import { FaChevronLeft } from 'react-icons/fa';
 import SubmissionVideo from '@/app/components/SubmissionVideo';
 
-const JobSubmission = () => {
+const JobSubmission = ({params}) => {
   const router = useRouter();
-  const [profileVideo, setProfileVideo] = useState(); 
+  const [profileVideo, setProfileVideo] = useState();
+
+  const clickHandler = async () => {
+    const formData = new FormData();
+    formData.append('Video', profileVideo);
+    customFetch(
+      `/applications/apply/${params.id}`,
+      {
+        method: 'POST',
+        body: formData,
+      },
+      false
+    )
+      .then((res) => {
+        toast.success('Success!');
+        router.push('/dashboard/candidate');
+      })
+      .catch((err) => {
+        toast.error('Failed to Complete Profile, please try again later');
+      });
+  };
 
   return (
     <div className="p-4">
@@ -41,7 +61,7 @@ const JobSubmission = () => {
         </p>
         <span className="text-sm ">(Max 10 MB)</span>
         <SubmissionVideo profileVideo={profileVideo} setProfileVideo={setProfileVideo} />
-        <button className="px-4 py-3 bg-white-light rounded-xl text-sm font-bold w-full text-primary disabled:brightness-50 my-4" disabled={profileVideo ? false : true} onClick={() => {}}>Continue</button>
+        <button className="px-4 py-3 bg-white-light rounded-xl text-sm font-bold w-full text-primary disabled:brightness-50 my-4" disabled={profileVideo ? false : true} onClick={() => clickHandler()}>Continue</button>
       </div>
     </div>
   );
