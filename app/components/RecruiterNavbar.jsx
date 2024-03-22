@@ -6,15 +6,18 @@ import textLogoPath from '@/public/images/text-logo.svg';
 import placeholder from '@/public/images/placeholder.svg';
 import { GoHome } from 'react-icons/go';
 import { IoBriefcaseOutline } from 'react-icons/io5';
-import { CiBookmarkMinus, CiDiscount1, CiSearch, CiUser } from 'react-icons/ci';
+import { CiBookmarkMinus, CiSearch, CiUser } from 'react-icons/ci';
 import { IoMdNotificationsOutline } from 'react-icons/io';
-import { IoSettingsOutline } from 'react-icons/io5';
 import { IoIosLogOut } from 'react-icons/io';
 import { FaChevronDown } from 'react-icons/fa';
 import { PiBuildingsBold } from 'react-icons/pi';
 import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 
 const RecruiterNavbar = () => {
+  
+  const router = useRouter()
+
   const handleLogout = () => {
     Cookies.remove('jwt');
     Cookies.remove('role');
@@ -97,7 +100,7 @@ const RecruiterNavbar = () => {
                   <span>Dashboard</span>
                 </Link>
                 <Link
-                  href="/application/recruiter"
+                  href="/applications/recruiter"
                   className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                 >
                   <span className="text-xl">
@@ -117,7 +120,7 @@ const RecruiterNavbar = () => {
                   <span>Search Visible Candidates</span>
                 </Link>
                 <Link
-                  href="#"
+                  href="/applications/recruiter/saved-applications"
                   className="flex items-center space-x-4  py-2 mt-6 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                 >
                   <span className="text-xl font-bold">
@@ -208,7 +211,7 @@ const RecruiterNavbar = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/applications/recruiter"
                   className="flex items-center space-x-4  py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                 >
                   <span>Applications</span>
@@ -216,7 +219,7 @@ const RecruiterNavbar = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/applications/recruiter/saved-applications"
                   className="flex items-center space-x-4  py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-white text-base"
                 >
                   <span>Saved Applications</span>
