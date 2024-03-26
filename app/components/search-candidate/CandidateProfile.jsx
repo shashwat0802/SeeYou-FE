@@ -1,5 +1,6 @@
 import React , {useState} from 'react'
 import { useData } from '../../search-candidate/SearchCandidateContext'
+import VideoComponent from '../../components/VideoComponent';
 
 const CandidateProfile = () => {
     const {state:{candidate},dispatch} = useData();
@@ -36,10 +37,11 @@ const CandidateProfile = () => {
             </section>
             <aside>
                 <label className='text-sm text-[#D4D6DD]'>Watch Profile Video</label>
-                <video width="640" height="360" controls className=' rounded-3xl pt-1.5'>
-                    <source src="https://static.videezy.com/system/resources/previews/000/053/262/original/HTML_Letters.mp4" type="video/mp4" />
+                {/* <video width="640" height="360" controls className=' rounded-3xl pt-1.5'>
+                    <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
-                </video>
+                </video> */}
+                <VideoComponent />
             </aside>
             <hr className=' border-[#35383F] ' />
             <p className=' line-clamp-2 text-[#8F9098]'>{candidate.intro}</p>
