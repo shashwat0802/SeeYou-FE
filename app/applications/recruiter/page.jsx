@@ -15,7 +15,7 @@ const CandidateMyApplication = () => {
   const [openTopFilter, setOpenTopFilter] = useState(false);
 
   useEffect(() => {
-    customFetch("/applications", {
+    customFetch("/applications/all", {
       method: "GET",
     })
       .then((res) => {

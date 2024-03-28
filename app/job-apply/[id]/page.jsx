@@ -91,14 +91,14 @@ const ApplyJobPage = ({ params }) => {
                       width={90}
                       height={90}
                       src={
-                        job.CompanyID.Logo.URL
-                          ? job.CompanyID.Logo.URL
+                        job.CompanyDetails.LogoURL
+                          ? job.CompanyDetails.LogoURL
                           : placeholder
                       }
                     />
                     <div>
                       <p className="text-[#D4D6DD] mt-1">
-                        {job.CompanyID.CompanyName}
+                        {job.CompanyDetails.CompanyName}
                       </p>
                     </div>
                   </div>

@@ -9,7 +9,7 @@ import { GoClock } from 'react-icons/go';
 import Image from 'next/image';
 import { customFetch } from '@/utils/fetchHelper';
 import { toast } from 'react-toastify';
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 const Job = ({ job }) => {
@@ -42,21 +42,27 @@ const Job = ({ job }) => {
         });
     }
   };
+
+
+  useEffect(() => { 
+    setIsBookMarked(job.isSaved)
+  } , [])
+
   return (
-    <div className="bg-[#1F222A] rounded-lg p-4 cursor-pointer">
-      <div className="flex pb-2  border-b border-[#35383F]">
-        <div className="mr-3">
+    <div className="bg-[#1F222A] rounded-lg p-4 cursor-pointer my-4 w-full">
+      <div className="flex pb-2  border-b border-[#35383F] justify-between">
+        <div className="">
           <Image
             alt="#"
             width={90}
             height={90}
-            src={job.CompanyID.Logo.URL ? job.CompanyID.Logo.URL : placeholder}
+            src={job.CompanyDetails.LogoURL? job.CompanyDetails.LogoURL : placeholder}
           />
         </div>
         <div>
           <Image alt="#" src={coFounderImg} />
           <p className="text-[#D4D6DD] mt-1 font-black">
-            {job.CompanyID.CompanyName}
+            {job.CompanyDetails.CompanyName}
           </p>
           <p className="text-lg mt-2">{job.JobTitle}</p>
         </div>
