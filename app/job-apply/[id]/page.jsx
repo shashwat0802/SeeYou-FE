@@ -343,9 +343,9 @@ const ApplyJobPage = ({ params }) => {
           </div>
           {/* Other Jobs in Our Company */}
           <div className="px-8 py-4">
-            <p className="text-lg font-bold text-white mb-3">
+            {/* <p className="text-lg font-bold text-white mb-3">
               Other Jobs in Our Company
-            </p>
+            </p> */}
             {/* <div>
               {savedJobs.map((data, index) => (
                 <div key={index} className="bg-[#1F222A] rounded-lg p-4 mt-2">
