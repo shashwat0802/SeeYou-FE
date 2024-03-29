@@ -187,10 +187,14 @@ const JobInformation = ({setQuestionNumber})=>
 
 const TermsAndCondition = ()=>
 {
+    const { postJobApi , state:{video:{descriptionVideo}} } = useData();
     const [check,setCheck] = useState(false);
+
+    console.log(descriptionVideo);
 
     const clickHandler = () => {
         // Call API here
+        postJobApi()
     }
     return (
         <>
