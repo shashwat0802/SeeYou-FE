@@ -13,6 +13,7 @@ import { LuFilter } from "react-icons/lu";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import { customFetch } from "@/utils/fetchHelper";
+import { BiDollar } from "react-icons/bi";
 
 const SavedJobs = () => {
   const [savedJobs, setSavedJobs] = useState([]);
@@ -67,67 +68,80 @@ const SavedJobs = () => {
                 width={90}
                 height={90}
                 src={
-                  data?.CompanyID?.Logo.URL ? data?.CompanyID?.Logo.URL : placeholder
+                  data?.CompanyID?.Logo.URL
+                    ? data?.CompanyID?.Logo.URL
+                    : placeholder
                 }
               />
             </div>
             <div>
               <div className="blue-bg p-2 my-2">
                 <p className="text-xs font-boldrounded-md">
-                  {data?.jobDetails?.createdAtHumanReadable}
+                  {data?.CreatedAt.slice(0, 10)}
                 </p>
               </div>
               <p className="text-[#D4D6DD] mt-1">
-                {data?.jobDetails?.companyName}
+                {data?.CompanyID?.CompanyName}
               </p>
-              <p className="text-2xl font-black mt-2">
-                {data?.jobDetails?.JobTitle}
-              </p>
+              <p className="text-2xl font-black mt-2">{data?.JobTitle}</p>
             </div>
             <button className="self-start text-lg font-black cursor-pointer text-[#ffc02d] mt-4 ml-4">
               <BsBookmarkDashFill />
             </button>
           </div>
-          <p className="text-lg mt-2">
-            {/* $ <span>50,000</span>- <span>55,000</span> /month */}
-            {data?.jobDetails?.salaryRange}
-          </p>
+          {data?.SalaryMin && (
+            <p className="text-lg mt-2 flex gap-1 items-center">
+              {/* $ <span>50,000</span>- <span>55,000</span> /month */}
+              <BiDollar />
+              {data?.SalaryMin} <span>-</span> {data?.SalaryMax}
+            </p>
+          )}
           <ul className="my-2">
-            <li className="text-sm flex items-center">
-              <span className="text-lg mr-1">
-                <GoHome />
-              </span>
-              <span>{data?.jobDetails?.JobIndustry}</span> &nbsp;&nbsp;.
-            </li>
+            {data?.JobIndustry && (
+              <li className="text-sm flex items-center">
+                <span className="text-lg mr-1">
+                  <GoHome />
+                </span>
+                <span>{data?.JobIndustry}</span> &nbsp;&nbsp;.
+              </li>
+            )}
           </ul>
           <ul className="flex my-2">
-            <li className="text-sm flex items-center mr-6 ">
-              <span className="text-lg mr-1">
-                <IoLocationOutline />
-              </span>
-              <span>{data?.jobDetails?.City}</span> &nbsp;&nbsp;.
-            </li>
-            <li className="text-sm flex items-center mr-6 ">
-              <span className="text-lg mr-1">
-                {' '}
-                <LuArrowUpDown />
-              </span>
-              <span>{data?.jobDetails?.Location}</span> &nbsp;&nbsp;.
-            </li>
+            {data?.City && (
+              <li className="text-sm flex items-center mr-6 ">
+                <span className="text-lg mr-1">
+                  <IoLocationOutline />
+                </span>
+                <span>{data?.City}</span> &nbsp;&nbsp;.
+              </li>
+            )}
+            {data?.Location && (
+              <li className="text-sm flex items-center mr-6 ">
+                <span className="text-lg mr-1">
+                  {" "}
+                  <LuArrowUpDown />
+                </span>
+                <span>{data?.Location}</span> &nbsp;&nbsp;.
+              </li>
+            )}
           </ul>
           <ul className="flex">
-            <li className="text-sm flex items-center mr-6 ">
-              <span className="text-lg mr-1">
-                <IoBriefcaseOutline />
-              </span>
-              <span>{data?.jobDetails?.ExperianceLevel}</span> &nbsp;&nbsp;.
-            </li>
-            <li className="text-sm flex items-center mr-6 ">
-              <span className="text-lg mr-1">
-                <GoClock />
-              </span>
-              <span>{data?.jobDetails?.JobType}</span>&nbsp;&nbsp; .
-            </li>
+            {data?.ExperianceLevel && (
+              <li className="text-sm flex items-center mr-6 ">
+                <span className="text-lg mr-1">
+                  <IoBriefcaseOutline />
+                </span>
+                <span>{data?.ExperianceLevel}</span> &nbsp;&nbsp;.
+              </li>
+            )}
+            {data?.JobType && (
+              <li className="text-sm flex items-center mr-6 ">
+                <span className="text-lg mr-1">
+                  <GoClock />
+                </span>
+                <span>{data?.JobType}</span>&nbsp;&nbsp; .
+              </li>
+            )}
           </ul>
         </div>
       ))}
