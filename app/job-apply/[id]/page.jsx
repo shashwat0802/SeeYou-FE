@@ -96,15 +96,11 @@ const ApplyJobPage = ({ params }) => {
                       alt="#"
                       width={90}
                       height={90}
-                      src={
-                        job.CompanyDetails.LogoURL
-                          ? job.CompanyDetails.LogoURL
-                          : placeholder
-                      }
+                      src={job.CompanyID?.Logo?.URL && job.CompanyID?.Logo?.URL}
                     />
                     <div>
                       <p className="text-[#D4D6DD] mt-1">
-                        {job.CompanyDetails.CompanyName}
+                        {job?.CompanyID?.CompanyName}
                       </p>
                     </div>
                   </div>
@@ -117,10 +113,10 @@ const ApplyJobPage = ({ params }) => {
                     </div>
                   </div>
                 </div>
-                <p className="text-2xl font-black mt-2">{job.JobTitle}</p>
+                <p className="text-2xl font-black mt-2">{job?.JobTitle}</p>
               </div>
               <p className="text-lg mt-2">
-                $ <span>{job.SalaryMin}</span>- <span>{job.SalaryMax}</span>{" "}
+                $ <span>{job.SalaryMax}</span> - <span>{job?.SalaryMin}</span>{" "}
                 /month
               </p>
               <ul className="my-2">

@@ -11,18 +11,39 @@ const CandidateDashboard = () => {
   const [recommendedJobs, setRecommendedJobs] = useState([]);
   const [allJobs, setAllJobs] = useState([]);
   const [searchJob, setSearchJob] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    customFetch("/jobs", {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + window.scrollY >= document.body.offsetHeight &&
+        allJobs.length
+      ) {
+        setLoading(true);
+        setCurrentPage((prevPage) => prevPage + 1);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [allJobs, loading]);
+
+  useEffect(() => {
+    setLoading(true);
+    customFetch(`/jobs?page=${currentPage}&limit=${itemsPerPage}`, {
       method: "GET",
     })
       .then((response) => {
         setAllJobs(response.data);
         setRecommendedJobs(response.data);
+        setLoading(false);
       })
       .catch((err) => {
         toast.error("unable to get jobs !");
+        setLoading(false);
       });
-  }, []);
+  }, [currentPage, itemsPerPage]);
 
   const searchJobs = () => {
     let search = document.querySelector("#job-search").value;
